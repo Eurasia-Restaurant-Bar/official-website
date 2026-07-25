@@ -108,17 +108,29 @@ export default function HomeScreen({
       </div>
 
       <div className="story-card">
-        <span className="m-eyebrow">{t("Our story", "A nossa história")}</span>
-        <h3>{t("Two continents, one table.", "Dois continentes, uma mesa.")}</h3>
-        <p>
-          {t(
-            "We carried our grandmother's spice tin from Kathmandu to Lisbon. Every momo is folded by hand each morning.",
-            "Trouxemos a lata de especiarias da avó de Katmandu para Lisboa. Cada momo é dobrado à mão todas as manhãs."
-          )}
-        </p>
-        <button type="button" className="link" onClick={() => onNavigate("menu")}>
-          {t("Explore the menu →", "Ver a ementa →")}
-        </button>
+        <div className="story-card-bg">
+          <Image
+            src="/photos/story-team.jpg"
+            alt="Eurasia staff hand-folding momo dumplings"
+            fill
+            sizes="92vw"
+            style={{ objectFit: "cover" }}
+          />
+        </div>
+        <div className="story-card-overlay"></div>
+        <div className="story-card-content">
+          <span className="m-eyebrow">{t("Our story", "A nossa história")}</span>
+          <h3>{t("Two continents, one table.", "Dois continentes, uma mesa.")}</h3>
+          <p>
+            {t(
+              "We carried our grandmother's spice tin from Kathmandu to Lisbon. Every momo is folded by hand each morning.",
+              "Trouxemos a lata de especiarias da avó de Katmandu para Lisboa. Cada momo é dobrado à mão todas as manhãs."
+            )}
+          </p>
+          <button type="button" className="link" onClick={() => onNavigate("menu")}>
+            {t("Explore the menu →", "Ver a ementa →")}
+          </button>
+        </div>
       </div>
     </>
   );

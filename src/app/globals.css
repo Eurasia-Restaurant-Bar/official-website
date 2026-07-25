@@ -229,7 +229,8 @@ header.nav .brand:hover img{transform:scale(1.08) translateY(-1px)}
 /* ============ FOOTER ============ */
 footer{background:var(--dark);color:rgba(255,255,255,.7);padding:60px 0 34px;border-top:1px solid rgba(255,255,255,.08)}
 .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:40px}
-footer .brand{color:#fff}
+footer .brand{color:#fff;display:flex;align-items:center;gap:12px}
+.brand-mark{display:flex;align-items:center;background:#fff;border-radius:var(--r);padding:8px 14px;box-shadow:0 8px 20px rgba(0,0,0,.18)}
 footer p{font-size:14px;max-width:34ch;margin-top:14px}
 .foot-col h5{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;margin-bottom:14px}
 .foot-col a{display:block;font-size:14px;padding:5px 0;color:rgba(255,255,255,.65)}
@@ -428,9 +429,13 @@ footer p{font-size:14px;max-width:34ch;margin-top:14px}
 .mobile-app-shell .pick p{font-size:12.5px;color:var(--muted);margin-top:5px;line-height:1.45}
 
 /* story card */
-.mobile-app-shell .story-card{margin:20px 18px 0;border-radius:22px;overflow:hidden;background:var(--dark);color:#fff;padding:24px 22px}
-.mobile-app-shell .story-card h3{font-family:var(--font-display);font-size:26px;font-weight:600;margin:8px 0 10px}
-.mobile-app-shell .story-card p{font-size:14px;color:rgba(255,255,255,.75);line-height:1.55}
+.mobile-app-shell .story-card{position:relative;margin:20px 18px 0;min-height:280px;border-radius:22px;overflow:hidden;color:#fff;padding:24px 22px;display:flex;flex-direction:column;justify-content:flex-end}
+.mobile-app-shell .story-card-bg{position:absolute;inset:0;z-index:0;background:var(--dark)}
+.mobile-app-shell .story-card-overlay{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg, oklch(15% 0.012 30/.15) 0%, oklch(15% 0.012 30/.75) 60%, oklch(15% 0.012 30/.92) 100%)}
+.mobile-app-shell .story-card-content{position:relative;z-index:2}
+.mobile-app-shell .story-card h3{font-family:var(--font-display);font-size:26px;font-weight:600;color:#fff;margin:8px 0 10px}
+.mobile-app-shell .story-card p{font-size:14px;color:rgba(255,255,255,.85);line-height:1.55}
 .mobile-app-shell .story-card .link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:13px;font-weight:700;color:var(--saffron)}
 
 /* menu screen */

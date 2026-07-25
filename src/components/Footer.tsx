@@ -12,13 +12,15 @@ export default function Footer() {
         <div className="foot-grid">
           <div>
             <div className="brand">
-              <Image
-                src="/logo.png"
-                alt="Eurasia Restaurant & Bar"
-                width={1370}
-                height={1148}
-                style={{ height: 64, width: "auto" }}
-              />
+              <span className="brand-mark">
+                <Image
+                  src="/logo.png"
+                  alt="Eurasia Restaurant & Bar"
+                  width={1370}
+                  height={1148}
+                  style={{ height: 64, width: "auto" }}
+                />
+              </span>
               <small>NEPALESE KITCHEN · LISBOA</small>
             </div>
             <p>
