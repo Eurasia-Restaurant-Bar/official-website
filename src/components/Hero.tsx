@@ -25,13 +25,13 @@ export default function Hero() {
             <span className="eyebrow">{t("Himalaya meets the Tejo", "O Himalaia encontra o Tejo")}</span>
             <h1>
               {t("Handmade momo & ", "Momo artesanal & ")}
-              <em>{t("Himalayan", "fogo")}</em>
-              {t(" fire, in Lisbon.", " do Himalaia, em Lisboa.")}
+              <em>{t("Nepali", "sabores")}</em>
+              {t(" flavours, in Lisbon.", " nepaleses, em Lisboa.")}
             </h1>
             <p className="lead">
               {t(
-                "Family recipes from the foothills of Nepal — steamed dumplings, charcoal sekuwa and slow-cooked dal bhat — served warm in the heart of the city.",
-                "Receitas de família dos sopés do Nepal — dumplings ao vapor, sekuwa na brasa e dal bhat cozinhado lentamente — servido no coração da cidade."
+                "Hand-folded momo, wok-fried noodles and hearty rice plates — Nepali recipes served warm in the heart of the city.",
+                "Momo dobrado à mão, noodles salteados e pratos de arroz substanciais — receitas nepalesas servidas no coração da cidade."
               )}
             </p>
             <div className="hero-cta">
@@ -58,10 +58,6 @@ export default function Hero() {
             </div>
           </div>
           <div className="hero-visual">
-            <div className="food-badge">
-              €7,99
-              <span>{t("Chicken MoMo", "MoMo de Frango")}</span>
-            </div>
             <div className="food-frame" data-label="Signature momo platter"></div>
           </div>
         </div>

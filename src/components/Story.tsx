@@ -30,8 +30,8 @@ export default function Story() {
           </p>
           <p>
             {t(
-              "Every momo is folded by hand each morning. Our sekuwa is grilled over charcoal, our dal simmered slow. Nothing from a jar — just the food we'd cook for our own family.",
-              "Cada momo é dobrado à mão todas as manhãs. A nossa sekuwa é grelhada sobre carvão, o nosso dal cozinhado devagar. Nada de frascos — apenas a comida que faríamos para a nossa família."
+              "Every momo is folded by hand each morning, our noodles wok-fried to order. Nothing from a jar — just the food we'd cook for our own family.",
+              "Cada momo é dobrado à mão todas as manhãs, os noodles salteados na hora. Nada de frascos — apenas a comida que faríamos para a nossa família."
             )}
           </p>
           <div className="sign">
