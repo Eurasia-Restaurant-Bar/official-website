@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Eurasia Restaurant &amp; Bar — Nepalese Kitchen · Lisbon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --bg:      oklch(97% 0.012 78);   /* warm ivory */
+  --surface: oklch(99.5% 0.006 80); /* near white */
+  --panel:   oklch(94% 0.016 74);   /* warm sand */
+  --ink:     oklch(24% 0.03 45);    /* espresso */
+  --fg:      oklch(30% 0.028 45);
+  --muted:   oklch(48% 0.02 50);
+  --border:  oklch(88% 0.014 70);
+  --accent:  oklch(52% 0.16 42);    /* paprika / terracotta */
+  --accent-d:oklch(44% 0.15 40);
+  --saffron: oklch(74% 0.14 72);    /* turmeric/saffron secondary */
+  --dark:    oklch(23% 0.028 45);   /* espresso section bg */
+  --star:    oklch(72% 0.14 72);
+  --r:14px;
+  --maxw:1200px;
+  --font-display:'Cormorant Garamond','Iowan Old Style',Georgia,serif;
+  --font-body:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--fg);
+  font-family:var(--font-body);font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.eyebrow{
+  font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--accent);display:inline-flex;align-items:center;gap:10px;
+}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--accent);display:inline-block}
+h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.05;color:var(--ink);letter-spacing:-.01em}
+h2{font-size:clamp(34px,5vw,52px)}
+h3{font-size:24px;letter-spacing:0}
+p{text-wrap:pretty}
+section{padding:96px 0}
+.lead{max-width:60ch;color:var(--muted);font-size:18px}
+
+/* ============ BUTTONS ============ */
+.btn{
+  display:inline-flex;align-items:center;gap:9px;cursor:pointer;border:1px solid transparent;
+  font-family:var(--font-body);font-weight:600;font-size:14px;letter-spacing:.01em;
+  padding:13px 22px;border-radius:999px;transition:transform .15s ease,background .2s,color .2s;
+}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-d)}
+.btn-ghost{background:transparent;border-color:var(--border);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--ink)}
+.btn-light{background:#fff;color:var(--ink)}
+.btn-outline-light{background:transparent;border-color:rgba(255,255,255,.35);color:#fff}
+.btn-outline-light:hover{border-color:#fff}
+
+/* ============ NAV ============ */
+header.nav{
+  position:sticky;top:0;z-index:50;background:color-mix(in oklab,var(--bg) 82%,transparent);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);
+}
+.nav-inner{display:flex;align-items:center;gap:24px;height:72px}
+.brand{font-family:var(--font-display);font-weight:600;font-size:24px;letter-spacing:.02em;color:var(--ink)}
+.brand small{display:block;font-family:var(--font-body);font-size:9.5px;font-weight:600;letter-spacing:.34em;color:var(--accent);margin-top:-2px}
+.nav-links{display:flex;gap:26px;margin-left:auto}
+.nav-links a{font-size:14px;font-weight:500;color:var(--fg);position:relative;padding:4px 0}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;height:1.5px;width:0;background:var(--accent);transition:width .2s}
+.nav-links a:hover::after{width:100%}
+.nav-tools{display:flex;align-items:center;gap:14px}
+.lang{display:inline-flex;border:1px solid var(--border);border-radius:999px;overflow:hidden;font-size:12px;font-weight:600}
+.lang button{background:transparent;border:0;cursor:pointer;padding:6px 11px;color:var(--muted);font-family:var(--font-body);font-weight:600;letter-spacing:.04em}
+.lang button.on{background:var(--ink);color:#fff}
+.nav-burger{display:none;background:none;border:0;cursor:pointer;padding:6px}
+.nav-burger span{display:block;width:22px;height:2px;background:var(--ink);margin:4px 0;border-radius:2px}
+
+/* ============ HERO ============ */
+.hero{background:var(--dark);color:#fff;padding:0;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;min-height:640px;align-items:center;gap:40px}
+.hero-copy{padding:80px 0}
+.hero h1{color:#fff;font-size:clamp(48px,6.6vw,84px);margin:20px 0 22px}
+.hero h1 em{font-style:italic;color:var(--saffron)}
+.hero .lead{color:rgba(255,255,255,.72);font-size:19px;max-width:46ch}
+.hero-cta{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+.hero-meta{display:flex;gap:28px;margin-top:44px;flex-wrap:wrap}
+.hero-meta div{border-left:2px solid var(--accent);padding-left:14px}
+.hero-meta b{display:block;font-family:var(--font-display);font-size:22px;color:#fff;font-weight:600}
+.hero-meta span{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.hero-visual{position:relative;height:100%;min-height:640px}
+/* food-frame placeholder */
+.food-frame{position:absolute;inset:0;
+  background:
+    radial-gradient(120% 90% at 70% 20%, oklch(58% 0.16 55/.55), transparent 60%),
+    radial-gradient(90% 80% at 20% 90%, oklch(46% 0.13 30/.6), transparent 55%),
+    repeating-linear-gradient(135deg, oklch(30% 0.03 45/.25) 0 2px, transparent 2px 22px),
+    linear-gradient(160deg, oklch(34% 0.04 48), oklch(20% 0.025 40));
+}
+.food-frame::after{content:attr(data-label);position:absolute;left:24px;bottom:22px;
+  font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.62);
+  border:1px solid rgba(255,255,255,.22);padding:6px 11px;border-radius:999px}
+.food-badge{position:absolute;top:28px;left:-30px;z-index:2;background:var(--saffron);color:var(--ink);
+  font-family:var(--font-display);font-weight:600;font-size:20px;padding:14px 20px;border-radius:12px;
+  box-shadow:0 18px 40px rgba(0,0,0,.35);transform:rotate(-4deg)}
+.food-badge span{display:block;font-family:var(--font-body);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.7}
+
+/* ============ STORY ============ */
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.story-copy h2{margin:16px 0 20px}
+.story-copy p+p{margin-top:16px}
+.sign{margin-top:26px;font-family:var(--font-display);font-style:italic;font-size:22px;color:var(--ink)}
+.sign small{display:block;font-family:var(--font-body);font-style:normal;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.ph-img{position:relative;border-radius:var(--r);overflow:hidden;background:
+    radial-gradient(90% 80% at 30% 20%, oklch(80% 0.09 74/.7), transparent 60%),
+    linear-gradient(150deg, var(--panel), oklch(90% 0.02 60));
+  border:1px solid var(--border)}
+.ph-img::after{content:attr(data-label);position:absolute;left:16px;bottom:14px;font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--muted);background:color-mix(in oklab,var(--surface) 70%,transparent);
+  padding:5px 10px;border-radius:999px;border:1px solid var(--border)}
+.story-img{aspect-ratio:4/5}
+
+/* ============ HIGHLIGHTS ============ */
+.hl-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:44px;flex-wrap:wrap}
+.cards-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.dish-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:transform .2s,box-shadow .2s}
+.dish-card:hover{transform:translateY(-4px);box-shadow:0 22px 40px oklch(40% 0.04 45/.12)}
+.dish-card .ph-img{aspect-ratio:16/11;border:0;border-radius:0;border-bottom:1px solid var(--border)}
+.dish-body{padding:22px 22px 24px}
+.dish-body .row{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.dish-body h3{font-size:22px}
+.price{font-family:var(--font-body);font-weight:700;color:var(--accent);font-size:16px;white-space:nowrap}
+.dish-body p{color:var(--muted);font-size:14.5px;margin-top:8px}
+.tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--accent-d);background:oklch(52% 0.16 42/.1);padding:4px 9px;border-radius:6px;margin-top:14px}
+
+/* ============ FULL MENU ============ */
+.menu{background:var(--panel)}
+.menu-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:36px 0 40px}
+.menu-tabs button{font-family:var(--font-body);font-weight:600;font-size:14px;cursor:pointer;
+  border:1px solid var(--border);background:var(--surface);color:var(--fg);padding:10px 18px;border-radius:999px;transition:.18s}
+.menu-tabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.menu-panel{display:none}
+.menu-panel.on{display:block;animation:fade .3s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.menu-list{display:grid;grid-template-columns:1fr 1fr;gap:6px 56px}
+.mrow{display:flex;align-items:baseline;gap:12px;padding:15px 0;border-bottom:1px dotted var(--border)}
+.mrow .mname{font-family:var(--font-display);font-size:21px;font-weight:600;color:var(--ink)}
+.mrow .mdesc{display:block;font-family:var(--font-body);font-size:13.5px;color:var(--muted);margin-top:2px;line-height:1.4}
+.mrow .dots{flex:1;border-bottom:1px dotted var(--border);transform:translateY(-4px);min-width:20px}
+.mrow .mprice{font-weight:700;color:var(--accent);font-size:16px;white-space:nowrap}
+.veg{font-size:10px;font-weight:700;color:oklch(52% 0.13 145);border:1px solid oklch(52% 0.13 145/.4);border-radius:4px;padding:1px 5px;margin-left:8px;vertical-align:middle;letter-spacing:.06em}
+.spicy{color:var(--accent);margin-left:6px}
+.menu-note{margin-top:34px;font-size:13px;color:var(--muted);border-left:2px solid var(--saffron);padding-left:14px}
+
+/* ============ GALLERY ============ */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:180px;gap:14px}
+.gal .ph-img{border-radius:12px}
+.gal .g-tall{grid-row:span 2}
+.gal .g-wide{grid-column:span 2}
+
+/* ============ REVIEWS ============ */
+.reviews{background:var(--dark);color:#fff}
+.reviews h2{color:#fff}
+.rev-top{display:flex;align-items:center;gap:28px;flex-wrap:wrap;margin-bottom:44px}
+.rev-score{font-family:var(--font-display);font-size:64px;font-weight:600;color:var(--saffron);line-height:1}
+.rev-stars{color:var(--star);font-size:20px;letter-spacing:2px}
+.rev-top small{color:rgba(255,255,255,.55);font-size:13px;display:block;margin-top:4px}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.rev-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--r);padding:26px}
+.rev-card .stars{color:var(--star);font-size:14px;letter-spacing:2px}
+.rev-card p{font-family:var(--font-display);font-size:20px;font-style:italic;color:#fff;margin:14px 0 18px;line-height:1.35}
+.rev-who{display:flex;align-items:center;gap:12px}
+.rev-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(140deg,var(--accent),var(--saffron));display:grid;place-items:center;font-weight:700;color:#fff;font-size:14px}
+.rev-who b{font-size:14px;color:#fff;font-weight:600}
+.rev-who span{font-size:12px;color:rgba(255,255,255,.5)}
+.sample-flag{display:inline-block;margin-top:26px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);border:1px dashed rgba(255,255,255,.25);padding:6px 12px;border-radius:999px}
+
+/* ============ VISIT ============ */
+.visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.info-block{margin-bottom:30px}
+.info-block h4{font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.hours{width:100%;border-collapse:collapse}
+.hours td{padding:9px 0;border-bottom:1px solid var(--border);font-size:15px}
+.hours td:last-child{text-align:right;color:var(--muted);font-variant-numeric:tabular-nums}
+.hours tr.today td{color:var(--ink);font-weight:700}
+.hours tr.today td:last-child{color:var(--accent)}
+.map{position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);aspect-ratio:1/1;
+  background:
+    linear-gradient(0deg, oklch(88% 0.02 70) 1px, transparent 1px) 0 0/100% 44px,
+    linear-gradient(90deg, oklch(88% 0.02 70) 1px, transparent 1px) 0 0/44px 100%,
+    linear-gradient(160deg, oklch(93% 0.02 70), oklch(90% 0.03 150));
+}
+.map .river{position:absolute;left:-5%;bottom:12%;width:110%;height:70px;background:oklch(78% 0.06 220/.55);transform:rotate(-6deg);border-radius:40px;filter:blur(.5px)}
+.map .pin{position:absolute;left:52%;top:44%;transform:translate(-50%,-100%);z-index:2}
+.map .pin svg{filter:drop-shadow(0 6px 10px rgba(0,0,0,.3))}
+.map .pin-label{position:absolute;left:50%;top:8px;transform:translateX(-50%);background:var(--ink);color:#fff;
+  font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;white-space:nowrap}
+.map .maplink{position:absolute;right:14px;bottom:14px;background:#fff;border:1px solid var(--border);
+  font-size:12px;font-weight:600;padding:8px 13px;border-radius:8px;color:var(--ink)}
+
+/* reservation form */
+.book{margin-top:12px}
+.book .field{margin-bottom:16px}
+.book label{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+.book input,.book select,.book textarea{width:100%;font-family:var(--font-body);font-size:15px;color:var(--ink);
+  background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;transition:border .15s}
+.book input:focus,.book select:focus,.book textarea:focus{outline:none;border-color:var(--accent)}
+.book .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.book textarea{resize:vertical;min-height:74px}
+.book .ok{display:none;background:oklch(52% 0.13 145/.12);border:1px solid oklch(52% 0.13 145/.4);color:oklch(38% 0.1 145);
+  border-radius:10px;padding:14px;font-size:14px;font-weight:600;margin-top:6px}
+.book .ok.show{display:block}
+
+/* ============ FOOTER ============ */
+footer{background:var(--dark);color:rgba(255,255,255,.7);padding:60px 0 34px;border-top:1px solid rgba(255,255,255,.08)}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:40px}
+footer .brand{color:#fff}
+footer p{font-size:14px;max-width:34ch;margin-top:14px}
+.foot-col h5{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;margin-bottom:14px}
+.foot-col a{display:block;font-size:14px;padding:5px 0;color:rgba(255,255,255,.65)}
+.foot-col a:hover{color:var(--saffron)}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:22px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12.5px;color:rgba(255,255,255,.45)}
+.socials{display:flex;gap:12px}
+.socials a{width:36px;height:36px;border:1px solid rgba(255,255,255,.16);border-radius:50%;display:grid;place-items:center;color:#fff}
+.socials a:hover{background:var(--accent);border-color:var(--accent)}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:1000px){
+  .hero-grid,.story-grid,.visit-grid{grid-template-columns:1fr}
+  .hero-visual{min-height:340px;order:-1}
+  .hero-copy{padding:56px 0 40px}
+  .cards-3,.rev-grid{grid-template-columns:1fr 1fr}
+  .menu-list{grid-template-columns:1fr;gap:0 0}
+  .gal{grid-template-columns:repeat(2,1fr)}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  section{padding:64px 0}
+  .wrap{padding:0 20px}
+  .nav-links{display:none}
+  .nav-burger{display:block}
+  .nav-links.open{display:flex;position:absolute;top:72px;left:0;right:0;flex-direction:column;gap:0;
+    background:var(--surface);border-bottom:1px solid var(--border);padding:8px 20px}
+  .nav-links.open a{padding:14px 0;border-bottom:1px solid var(--border)}
+  .cards-3,.rev-grid,.gal,.foot-grid,.book .two{grid-template-columns:1fr}
+  .hero-meta{gap:18px}
+  .rev-top{gap:18px}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand">Eurasia<small>NEPALESE KITCHEN · LISBOA</small></a>
+    <nav class="nav-links" id="navlinks">
+      <a href="#story" data-en="Our Story" data-pt="A Nossa História">Our Story</a>
+      <a href="#menu" data-en="Menu" data-pt="Ementa">Menu</a>
+      <a href="#gallery" data-en="Gallery" data-pt="Galeria">Gallery</a>
+      <a href="#reviews" data-en="Reviews" data-pt="Avaliações">Reviews</a>
+      <a href="#visit" data-en="Visit" data-pt="Visitar">Visit</a>
+    </nav>
+    <div class="nav-tools">
+      <div class="lang" role="group" aria-label="Language">
+        <button data-lang="en" class="on">EN</button>
+        <button data-lang="pt">PT</button>
+      </div>
+      <a href="#visit" class="btn btn-primary" data-en="Reserve" data-pt="Reservar">Reserve</a>
+      <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<a id="top"></a>
+
+<!-- ============ HERO ============ -->
+<section class="hero" style="padding:0" data-od-id="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow" data-en="Himalaya meets the Tejo" data-pt="O Himalaia encontra o Tejo">Himalaya meets the Tejo</span>
+        <h1 data-en="Handmade momo &amp; <em>Himalayan</em> fire, in Lisbon." data-pt="Momo artesanal &amp; <em>fogo</em> do Himalaia, em Lisboa.">Handmade momo &amp; <em>Himalayan</em> fire, in Lisbon.</h1>
+        <p class="lead" data-en="Family recipes from the foothills of Nepal — steamed dumplings, charcoal sekuwa and slow-cooked dal bhat — served warm in the heart of the city." data-pt="Receitas de família dos sopés do Nepal — dumplings ao vapor, sekuwa na brasa e dal bhat cozinhado lentamente — servido no coração da cidade.">Family recipes from the foothills of Nepal — steamed dumplings, charcoal sekuwa and slow-cooked dal bhat — served warm in the heart of the city.</p>
+        <div class="hero-cta">
+          <a href="#visit" class="btn btn-primary" data-en="Book a table" data-pt="Reservar mesa">Book a table</a>
+          <a href="#menu" class="btn btn-outline-light" data-en="Explore the menu" data-pt="Ver a ementa">Explore the menu</a>
+        </div>
+        <div class="hero-meta">
+          <div><b>Nepalese</b><span data-en="Authentic kitchen" data-pt="Cozinha autêntica">Authentic kitchen</span></div>
+          <div><b>Lisboa</b><span data-en="Open 6 days" data-pt="Aberto 6 dias">Open 6 days</span></div>
+          <div><b>Halal</b><span data-en="&amp; Veg options" data-pt="&amp; opções Veg">&amp; Veg options</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="food-badge">€8,50<span data-en="Chicken Momo" data-pt="Momo de Frango">Chicken Momo</span></div>
+        <div class="food-frame" data-label="Signature momo platter"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STORY ============ -->
+<section id="story" data-od-id="story">
+  <div class="wrap story-grid">
+    <div class="story-img ph-img" data-label="Our kitchen &amp; team"></div>
+    <div class="story-copy">
+      <span class="eyebrow" data-en="Our Story" data-pt="A Nossa História">Our Story</span>
+      <h2 data-en="Two continents, one table." data-pt="Dois continentes, uma mesa.">Two continents, one table.</h2>
+      <p data-en="Eurasia was born from a simple idea: the food we grew up with in Kathmandu deserved a home in Lisbon. We carried our grandmother's spice tin across a continent and opened a kitchen where the Himalayas meet the Atlantic." data-pt="O Eurasia nasceu de uma ideia simples: a comida com que crescemos em Katmandu merecia uma casa em Lisboa. Trouxemos a lata de especiarias da nossa avó através de um continente e abrimos uma cozinha onde os Himalaias encontram o Atlântico.">Eurasia was born from a simple idea: the food we grew up with in Kathmandu deserved a home in Lisbon. We carried our grandmother's spice tin across a continent and opened a kitchen where the Himalayas meet the Atlantic.</p>
+      <p data-en="Every momo is folded by hand each morning. Our sekuwa is grilled over charcoal, our dal simmered slow. Nothing from a jar — just the food we'd cook for our own family." data-pt="Cada momo é dobrado à mão todas as manhãs. A nossa sekuwa é grelhada sobre carvão, o nosso dal cozinhado devagar. Nada de frascos — apenas a comida que faríamos para a nossa família.">Every momo is folded by hand each morning. Our sekuwa is grilled over charcoal, our dal simmered slow. Nothing from a jar — just the food we'd cook for our own family.</p>
+      <div class="sign">The Eurasia family<small data-en="Founders &amp; head cooks" data-pt="Fundadores &amp; chefes de cozinha">Founders &amp; head cooks</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HIGHLIGHTS ============ -->
+<section id="highlights" style="background:var(--surface)" data-od-id="highlights">
+  <div class="wrap">
+    <div class="hl-head">
+      <div>
+        <span class="eyebrow" data-en="Chef's Picks" data-pt="Escolhas do Chef">Chef's Picks</span>
+        <h2 data-en="Three plates to start with." data-pt="Três pratos para começar.">Three plates to start with.</h2>
+      </div>
+      <a href="#menu" class="btn btn-ghost" data-en="See full menu →" data-pt="Ver ementa completa →">See full menu →</a>
+    </div>
+    <div class="cards-3">
+      <article class="dish-card">
+        <div class="ph-img" data-label="Steamed momo"></div>
+        <div class="dish-body">
+          <div class="row"><h3 data-en="Jhol Momo" data-pt="Jhol Momo">Jhol Momo</h3><span class="price">€10,00</span></div>
+          <p data-en="Ten steamed dumplings swimming in a warm sesame-tomato broth. The Kathmandu street classic." data-pt="Dez dumplings ao vapor num caldo morno de sésamo e tomate. O clássico de rua de Katmandu.">Ten steamed dumplings swimming in a warm sesame-tomato broth. The Kathmandu street classic.</p>
+          <span class="tag" data-en="House favourite" data-pt="Favorito da casa">House favourite</span>
+        </div>
+      </article>
+      <article class="dish-card">
+        <div class="ph-img" data-label="Charcoal grill"></div>
+        <div class="dish-body">
+          <div class="row"><h3 data-en="Chicken Sekuwa" data-pt="Sekuwa de Frango">Chicken Sekuwa</h3><span class="price">€13,00</span></div>
+          <p data-en="Charcoal-grilled marinated chicken with timur pepper, served with beaten rice and pickle." data-pt="Frango marinado grelhado no carvão com pimenta timur, servido com arroz batido e pickle.">Charcoal-grilled marinated chicken with timur pepper, served with beaten rice and pickle.</p>
+          <span class="tag" data-en="Over charcoal" data-pt="Sobre carvão">Over charcoal</span>
+        </div>
+      </article>
+      <article class="dish-card">
+        <div class="ph-img" data-label="Thakali thali set"></div>
+        <div class="dish-body">
+          <div class="row"><h3 data-en="Thakali Thali" data-pt="Thali Thakali">Thakali Thali</h3><span class="price">€14,50</span></div>
+          <p data-en="A full mountain feast: rice, lentils, seasonal greens, curry, pickle and papad on one brass plate." data-pt="Um banquete de montanha: arroz, lentilhas, verduras, caril, pickle e papad num prato de latão.">A full mountain feast: rice, lentils, seasonal greens, curry, pickle and papad on one brass plate.</p>
+          <span class="tag" data-en="Best value" data-pt="Melhor valor">Best value</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FULL MENU ============ -->
+<section id="menu" class="menu" data-od-id="menu">
+  <div class="wrap">
+    <span class="eyebrow" data-en="The Full Menu" data-pt="Ementa Completa">The Full Menu</span>
+    <h2 data-en="From momo to masala." data-pt="Do momo ao masala.">From momo to masala.</h2>
+    <div class="menu-tabs" id="menuTabs">
+      <button class="on" data-tab="momo" data-en="Momo" data-pt="Momo">Momo</button>
+      <button data-tab="grill" data-en="Grill &amp; Sekuwa" data-pt="Grelhados &amp; Sekuwa">Grill &amp; Sekuwa</button>
+      <button data-tab="curry" data-en="Curries &amp; Dal" data-pt="Caris &amp; Dal">Curries &amp; Dal</button>
+      <button data-tab="sides" data-en="Noodles &amp; Sides" data-pt="Noodles &amp; Acompanhamentos">Noodles &amp; Sides</button>
+      <button data-tab="drinks" data-en="Drinks" data-pt="Bebidas">Drinks</button>
+    </div>
+
+    <!-- MOMO -->
+    <div class="menu-panel on" data-panel="momo">
+      <div class="menu-list">
+        <div class="mrow"><div><span class="mname">Chicken Momo</span><span class="mdesc" data-en="Steamed or fried · 10 pcs" data-pt="Ao vapor ou frito · 10 un">Steamed or fried · 10 pcs</span></div><span class="dots"></span><span class="mprice">€8,50</span></div>
+        <div class="mrow"><div><span class="mname">Buff Momo</span><span class="mdesc" data-en="Water-buffalo, the Nepali way · 10 pcs" data-pt="Búfalo, à moda nepalesa · 10 un">Water-buffalo, the Nepali way · 10 pcs</span></div><span class="dots"></span><span class="mprice">€9,00</span></div>
+        <div class="mrow"><div><span class="mname">Veg Momo <span class="veg">VEG</span></span><span class="mdesc" data-en="Cabbage, carrot, paneer · 10 pcs" data-pt="Couve, cenoura, paneer · 10 un">Cabbage, carrot, paneer · 10 pcs</span></div><span class="dots"></span><span class="mprice">€7,50</span></div>
+        <div class="mrow"><div><span class="mname">Jhol Momo <span class="spicy">🌶</span></span><span class="mdesc" data-en="In warm sesame-tomato broth" data-pt="Em caldo de sésamo e tomate">In warm sesame-tomato broth</span></div><span class="dots"></span><span class="mprice">€10,00</span></div>
+        <div class="mrow"><div><span class="mname">C. Momo (Chilli)</span><span class="mdesc" data-en="Tossed in garlic-chilli sauce" data-pt="Salteado em molho de alho e malagueta">Tossed in garlic-chilli sauce</span></div><span class="dots"></span><span class="mprice">€10,50</span></div>
+        <div class="mrow"><div><span class="mname">Kothey Momo</span><span class="mdesc" data-en="Pan-seared half-moon dumplings" data-pt="Dumplings meia-lua salteados">Pan-seared half-moon dumplings</span></div><span class="dots"></span><span class="mprice">€9,50</span></div>
+      </div>
+    </div>
+
+    <!-- GRILL -->
+    <div class="menu-panel" data-panel="grill">
+      <div class="menu-list">
+        <div class="mrow"><div><span class="mname">Chicken Sekuwa <span class="spicy">🌶</span></span><span class="mdesc" data-en="Charcoal-grilled, timur pepper" data-pt="Grelhado no carvão, pimenta timur">Charcoal-grilled, timur pepper</span></div><span class="dots"></span><span class="mprice">€13,00</span></div>
+        <div class="mrow"><div><span class="mname">Lamb Sekuwa</span><span class="mdesc" data-en="Marinated lamb skewers" data-pt="Espetadas de borrego marinado">Marinated lamb skewers</span></div><span class="dots"></span><span class="mprice">€15,50</span></div>
+        <div class="mrow"><div><span class="mname">Sukuti Sadeko</span><span class="mdesc" data-en="Dried spiced meat, onion, chilli" data-pt="Carne seca picante, cebola, malagueta">Dried spiced meat, onion, chilli</span></div><span class="dots"></span><span class="mprice">€11,00</span></div>
+        <div class="mrow"><div><span class="mname">Chicken Choila</span><span class="mdesc" data-en="Newari smoked chicken, mustard oil" data-pt="Frango fumado newari, óleo de mostarda">Newari smoked chicken, mustard oil</span></div><span class="dots"></span><span class="mprice">€9,50</span></div>
+        <div class="mrow"><div><span class="mname">Tandoori Chicken</span><span class="mdesc" data-en="Half bird, clay-oven roasted" data-pt="Meio frango, assado em forno de barro">Half bird, clay-oven roasted</span></div><span class="dots"></span><span class="mprice">€12,50</span></div>
+        <div class="mrow"><div><span class="mname">Paneer Tikka <span class="veg">VEG</span></span><span class="mdesc" data-en="Chargrilled cottage cheese" data-pt="Queijo fresco grelhado">Chargrilled cottage cheese</span></div><span class="dots"></span><span class="mprice">€10,50</span></div>
+      </div>
+    </div>
+
+    <!-- CURRY -->
+    <div class="menu-panel" data-panel="curry">
+      <div class="menu-list">
+        <div class="mrow"><div><span class="mname">Thakali Thali</span><span class="mdesc" data-en="Rice, dal, curry, greens, pickle" data-pt="Arroz, dal, caril, verduras, pickle">Rice, dal, curry, greens, pickle</span></div><span class="dots"></span><span class="mprice">€14,50</span></div>
+        <div class="mrow"><div><span class="mname">Dal Bhat <span class="veg">VEG</span></span><span class="mdesc" data-en="Lentil soup, rice, seasonal veg" data-pt="Sopa de lentilhas, arroz, legumes">Lentil soup, rice, seasonal veg</span></div><span class="dots"></span><span class="mprice">€12,00</span></div>
+        <div class="mrow"><div><span class="mname">Goat Curry <span class="spicy">🌶</span></span><span class="mdesc" data-en="Bone-in, slow-cooked Himalayan style" data-pt="Com osso, cozinhado lento à himalaia">Bone-in, slow-cooked Himalayan style</span></div><span class="dots"></span><span class="mprice">€15,00</span></div>
+        <div class="mrow"><div><span class="mname">Chicken Curry</span><span class="mdesc" data-en="Home-style masala gravy" data-pt="Molho masala caseiro">Home-style masala gravy</span></div><span class="dots"></span><span class="mprice">€12,00</span></div>
+        <div class="mrow"><div><span class="mname">Paneer Butter Masala <span class="veg">VEG</span></span><span class="mdesc" data-en="Creamy tomato &amp; cashew" data-pt="Tomate cremoso &amp; caju">Creamy tomato &amp; cashew</span></div><span class="dots"></span><span class="mprice">€11,50</span></div>
+        <div class="mrow"><div><span class="mname">Aloo Tama <span class="veg">VEG</span></span><span class="mdesc" data-en="Bamboo shoot, potato, black-eyed pea" data-pt="Broto de bambu, batata, feijão frade">Bamboo shoot, potato, black-eyed pea</span></div><span class="dots"></span><span class="mprice">€10,50</span></div>
+      </div>
+    </div>
+
+    <!-- SIDES -->
+    <div class="menu-panel" data-panel="sides">
+      <div class="menu-list">
+        <div class="mrow"><div><span class="mname">Chicken Chowmein</span><span class="mdesc" data-en="Wok noodles, Nepali spices" data-pt="Noodles de wok, especiarias nepalesas">Wok noodles, Nepali spices</span></div><span class="dots"></span><span class="mprice">€9,00</span></div>
+        <div class="mrow"><div><span class="mname">Veg Thukpa <span class="veg">VEG</span></span><span class="mdesc" data-en="Himalayan noodle soup" data-pt="Sopa de noodles himalaia">Himalayan noodle soup</span></div><span class="dots"></span><span class="mprice">€8,50</span></div>
+        <div class="mrow"><div><span class="mname">Sel Roti</span><span class="mdesc" data-en="Sweet ring-shaped rice bread · 2 pcs" data-pt="Pão de arroz doce em anel · 2 un">Sweet ring-shaped rice bread · 2 pcs</span></div><span class="dots"></span><span class="mprice">€4,50</span></div>
+        <div class="mrow"><div><span class="mname">Garlic Naan <span class="veg">VEG</span></span><span class="mdesc" data-en="Clay-oven flatbread" data-pt="Pão do forno de barro">Clay-oven flatbread</span></div><span class="dots"></span><span class="mprice">€3,50</span></div>
+        <div class="mrow"><div><span class="mname">Aloo Achar <span class="veg">VEG</span></span><span class="mdesc" data-en="Spiced potato &amp; sesame salad" data-pt="Salada de batata &amp; sésamo picante">Spiced potato &amp; sesame salad</span></div><span class="dots"></span><span class="mprice">€5,00</span></div>
+        <div class="mrow"><div><span class="mname">Juju Dhau</span><span class="mdesc" data-en="&quot;King curd&quot; — Bhaktapur yoghurt" data-pt="&quot;Iogurte-rei&quot; — de Bhaktapur">"King curd" — Bhaktapur yoghurt</span></div><span class="dots"></span><span class="mprice">€4,50</span></div>
+      </div>
+    </div>
+
+    <!-- DRINKS -->
+    <div class="menu-panel" data-panel="drinks">
+      <div class="menu-list">
+        <div class="mrow"><div><span class="mname">Masala Chai</span><span class="mdesc" data-en="Spiced Himalayan milk tea" data-pt="Chá de leite himalaio especiado">Spiced Himalayan milk tea</span></div><span class="dots"></span><span class="mprice">€3,00</span></div>
+        <div class="mrow"><div><span class="mname">Sweet / Mango Lassi</span><span class="mdesc" data-en="Whipped yoghurt drink" data-pt="Bebida de iogurte batido">Whipped yoghurt drink</span></div><span class="dots"></span><span class="mprice">€4,00</span></div>
+        <div class="mrow"><div><span class="mname">Super Bock / Sagres</span><span class="mdesc" data-en="Portuguese lager · 33cl" data-pt="Cerveja portuguesa · 33cl">Portuguese lager · 33cl</span></div><span class="dots"></span><span class="mprice">€2,50</span></div>
+        <div class="mrow"><div><span class="mname">Gorkha Beer</span><span class="mdesc" data-en="Nepali lager · 33cl" data-pt="Cerveja nepalesa · 33cl">Nepali lager · 33cl</span></div><span class="dots"></span><span class="mprice">€4,50</span></div>
+        <div class="mrow"><div><span class="mname">Vinho da Casa</span><span class="mdesc" data-en="House red / white · glass" data-pt="Tinto / branco da casa · copo">House red / white · glass</span></div><span class="dots"></span><span class="mprice">€3,50</span></div>
+        <div class="mrow"><div><span class="mname">Tongba</span><span class="mdesc" data-en="Warm millet drink (seasonal)" data-pt="Bebida quente de painço (sazonal)">Warm millet drink (seasonal)</span></div><span class="dots"></span><span class="mprice">€6,00</span></div>
+      </div>
+    </div>
+    <p class="menu-note" data-en="Prices in euro (€). This is a sample menu — final dishes, prices and allergen info to be confirmed with the restaurant. Vegetarian dishes marked VEG; 🌶 indicates a spicier plate." data-pt="Preços em euro (€). Esta é uma ementa de exemplo — pratos, preços e informação de alergénios a confirmar com o restaurante. Pratos vegetarianos marcados VEG; 🌶 indica um prato mais picante.">Prices in euro (€). This is a sample menu — final dishes, prices and allergen info to be confirmed with the restaurant. Vegetarian dishes marked VEG; 🌶 indicates a spicier plate.</p>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section id="gallery" data-od-id="gallery">
+  <div class="wrap">
+    <span class="eyebrow" data-en="Gallery" data-pt="Galeria">Gallery</span>
+    <h2 style="margin-bottom:36px" data-en="A table full of warmth." data-pt="Uma mesa cheia de calor.">A table full of warmth.</h2>
+    <div class="gal">
+      <div class="ph-img g-tall" data-label="Momo, freshly folded"></div>
+      <div class="ph-img g-wide" data-label="The charcoal grill"></div>
+      <div class="ph-img" data-label="Brass thali"></div>
+      <div class="ph-img" data-label="Masala chai"></div>
+      <div class="ph-img g-wide" data-label="Our dining room"></div>
+      <div class="ph-img" data-label="Timur &amp; spice"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section id="reviews" class="reviews" data-od-id="reviews">
+  <div class="wrap">
+    <span class="eyebrow" data-en="Guest Reviews" data-pt="Avaliações">Guest Reviews</span>
+    <h2 data-en="Loved by Lisbon." data-pt="Adorado por Lisboa.">Loved by Lisbon.</h2>
+    <div class="rev-top">
+      <div class="rev-score">4,7</div>
+      <div>
+        <div class="rev-stars">★★★★★</div>
+        <small data-en="Sample rating — connect Google Reviews for live scores" data-pt="Classificação de exemplo — ligar Google Reviews para dados reais">Sample rating — connect Google Reviews for live scores</small>
+      </div>
+    </div>
+    <div class="rev-grid">
+      <article class="rev-card">
+        <div class="stars">★★★★★</div>
+        <p data-en="&ldquo;The jhol momo took me straight back to Thamel. Best Nepalese food I've had in Portugal.&rdquo;" data-pt="&ldquo;O jhol momo levou-me directo a Thamel. A melhor comida nepalesa que comi em Portugal.&rdquo;">&ldquo;The jhol momo took me straight back to Thamel. Best Nepalese food I've had in Portugal.&rdquo;</p>
+        <div class="rev-who"><div class="rev-av">A</div><div><b>Ana R.</b><span data-en="Local guide · Lisboa" data-pt="Guia local · Lisboa">Local guide · Lisboa</span></div></div>
+      </article>
+      <article class="rev-card">
+        <div class="stars">★★★★★</div>
+        <p data-en="&ldquo;Warm staff, huge portions, real charcoal sekuwa. We came for dinner and stayed for chai.&rdquo;" data-pt="&ldquo;Equipa simpática, doses enormes, sekuwa de carvão a sério. Viemos jantar e ficámos para o chai.&rdquo;">&ldquo;Warm staff, huge portions, real charcoal sekuwa. We came for dinner and stayed for chai.&rdquo;</p>
+        <div class="rev-who"><div class="rev-av">M</div><div><b>Miguel S.</b><span data-en="Diner" data-pt="Cliente">Diner</span></div></div>
+      </article>
+      <article class="rev-card">
+        <div class="stars">★★★★☆</div>
+        <p data-en="&ldquo;Finally a proper thali in the city. Vegetarian options are excellent and prices are fair.&rdquo;" data-pt="&ldquo;Finalmente um thali a sério na cidade. Opções vegetarianas excelentes e preços justos.&rdquo;">&ldquo;Finally a proper thali in the city. Vegetarian options are excellent and prices are fair.&rdquo;</p>
+        <div class="rev-who"><div class="rev-av">S</div><div><b>Sofia &amp; Deepak</b><span data-en="Regulars" data-pt="Habituais">Regulars</span></div></div>
+      </article>
+    </div>
+    <span class="sample-flag" data-en="◆ Sample reviews — real Google &amp; Facebook reviews to be embedded" data-pt="◆ Avaliações de exemplo — Google &amp; Facebook reais a integrar">◆ Sample reviews — real Google &amp; Facebook reviews to be embedded</span>
+  </div>
+</section>
+
+<!-- ============ VISIT ============ -->
+<section id="visit" style="background:var(--surface)" data-od-id="visit">
+  <div class="wrap">
+    <span class="eyebrow" data-en="Visit &amp; Reserve" data-pt="Visitar &amp; Reservar">Visit &amp; Reserve</span>
+    <h2 style="margin-bottom:44px" data-en="Find us. Book a table." data-pt="Encontre-nos. Reserve mesa.">Find us. Book a table.</h2>
+    <div class="visit-grid">
+      <!-- left: info + map -->
+      <div>
+        <div class="info-block">
+          <h4 data-en="Address" data-pt="Morada">Address</h4>
+          <p style="font-size:16px;color:var(--ink)">Eurasia Restaurant &amp; Bar<br>Lisboa, Portugal<br><span style="color:var(--muted)" data-en="Exact street address — to be confirmed" data-pt="Morada exacta — a confirmar">Exact street address — to be confirmed</span></p>
+        </div>
+        <div class="info-block">
+          <h4 data-en="Contact" data-pt="Contacto">Contact</h4>
+          <p style="font-size:16px;color:var(--ink)"><span data-en="Phone: to be confirmed" data-pt="Telefone: a confirmar">Phone: to be confirmed</span><br>hello@eurasialisboa.pt</p>
+        </div>
+        <div class="info-block">
+          <h4 data-en="Opening Hours" data-pt="Horário">Opening Hours</h4>
+          <table class="hours">
+            <tr><td data-en="Monday" data-pt="Segunda">Monday</td><td data-en="Closed" data-pt="Fechado">Closed</td></tr>
+            <tr><td data-en="Tue – Thu" data-pt="Ter – Qui">Tue – Thu</td><td>12:00 – 15:00 · 18:00 – 23:00</td></tr>
+            <tr class="today"><td data-en="Fri – Sat" data-pt="Sex – Sáb">Fri – Sat</td><td>12:00 – 24:00</td></tr>
+            <tr><td data-en="Sunday" data-pt="Domingo">Sunday</td><td>12:00 – 22:00</td></tr>
+          </table>
+        </div>
+        <div class="map" role="img" aria-label="Map showing Lisbon location">
+          <div class="river"></div>
+          <div class="pin">
+            <div class="pin-label" data-en="Eurasia · Lisboa" data-pt="Eurasia · Lisboa">Eurasia · Lisboa</div>
+            <svg width="34" height="44" viewBox="0 0 34 44" fill="none"><path d="M17 43C17 43 32 27 32 16C32 7.7 25.3 1 17 1C8.7 1 2 7.7 2 16C2 27 17 43 17 43Z" fill="var(--accent)"/><circle cx="17" cy="16" r="6" fill="#fff"/></svg>
+          </div>
+          <a class="maplink" href="https://maps.google.com/?q=Eurasia+Restaurant+Bar+Lisboa" target="_blank" rel="noopener" data-en="Open in Maps →" data-pt="Abrir no Maps →">Open in Maps →</a>
+        </div>
+      </div>
+
+      <!-- right: reservation form -->
+      <div>
+        <form class="book" id="bookForm" novalidate>
+          <div class="two">
+            <div class="field">
+              <label data-en="Name" data-pt="Nome">Name</label>
+              <input type="text" name="name" required data-en-ph="Your name" data-pt-ph="O seu nome" placeholder="Your name">
+            </div>
+            <div class="field">
+              <label data-en="Phone" data-pt="Telefone">Phone</label>
+              <input type="tel" name="phone" required data-en-ph="+351 ..." data-pt-ph="+351 ..." placeholder="+351 ...">
+            </div>
+          </div>
+          <div class="two">
+            <div class="field">
+              <label data-en="Date" data-pt="Data">Date</label>
+              <input type="date" name="date" required>
+            </div>
+            <div class="field">
+              <label data-en="Time" data-pt="Hora">Time</label>
+              <input type="time" name="time" required value="19:30">
+            </div>
+          </div>
+          <div class="two">
+            <div class="field">
+              <label data-en="Guests" data-pt="Pessoas">Guests</label>
+              <select name="guests">
+                <option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option data-en="7+" data-pt="7+">7+</option>
+              </select>
+            </div>
+            <div class="field">
+              <label data-en="Seating" data-pt="Lugar">Seating</label>
+              <select name="seating">
+                <option data-en="Indoor" data-pt="Interior">Indoor</option>
+                <option data-en="Terrace" data-pt="Esplanada">Terrace</option>
+                <option data-en="No preference" data-pt="Sem preferência">No preference</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label data-en="Notes (allergies, occasion…)" data-pt="Notas (alergias, ocasião…)">Notes (allergies, occasion…)</label>
+            <textarea name="notes" data-en-ph="Anything we should know?" data-pt-ph="Algo que devamos saber?" placeholder="Anything we should know?"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:15px" data-en="Request reservation" data-pt="Pedir reserva">Request reservation</button>
+          <div class="ok" id="bookOk" data-en="✓ Thanks! This is a prototype — no reservation was actually sent. We'll wire this to the restaurant's booking system next." data-pt="✓ Obrigado! Isto é um protótipo — nenhuma reserva foi enviada. Vamos ligar isto ao sistema de reservas do restaurante.">✓ Thanks! This is a prototype — no reservation was actually sent.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer data-od-id="footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand">Eurasia<small>NEPALESE KITCHEN · LISBOA</small></div>
+        <p data-en="Handmade Himalayan food in the heart of Lisbon. Momo, sekuwa, dal bhat and warm Nepali hospitality." data-pt="Comida himalaia artesanal no coração de Lisboa. Momo, sekuwa, dal bhat e a calorosa hospitalidade nepalesa.">Handmade Himalayan food in the heart of Lisbon. Momo, sekuwa, dal bhat and warm Nepali hospitality.</p>
+      </div>
+      <div class="foot-col">
+        <h5 data-en="Explore" data-pt="Explorar">Explore</h5>
+        <a href="#story" data-en="Our Story" data-pt="A Nossa História">Our Story</a>
+        <a href="#menu" data-en="Menu" data-pt="Ementa">Menu</a>
+        <a href="#gallery" data-en="Gallery" data-pt="Galeria">Gallery</a>
+        <a href="#visit" data-en="Visit &amp; Book" data-pt="Visitar &amp; Reservar">Visit &amp; Book</a>
+      </div>
+      <div class="foot-col">
+        <h5 data-en="Follow" data-pt="Seguir">Follow</h5>
+        <a href="https://www.facebook.com/p/Eurasia-Restaurant-Bar-61579302237652/" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://maps.google.com/?q=Eurasia+Restaurant+Bar+Lisboa" target="_blank" rel="noopener">Google Maps</a>
+        <a href="#" data-en="Instagram" data-pt="Instagram">Instagram</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Eurasia Restaurant &amp; Bar · Lisboa, Portugal</span>
+      <div class="socials">
+        <a href="https://www.facebook.com/p/Eurasia-Restaurant-Bar-61579302237652/" target="_blank" rel="noopener" aria-label="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h3l1-4h-4V8c0-1 .3-1.7 1.8-1.7H17V2.8C16.5 2.7 15.3 2.6 14 2.6c-2.8 0-4.7 1.7-4.7 4.8V10H6v4h3.3v8H13z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://maps.google.com/?q=Eurasia+Restaurant+Bar+Lisboa" target="_blank" rel="noopener" aria-label="Map"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.7 7-12a7 7 0 10-14 0c0 5.3 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* ---------- language toggle ---------- */
+  var lang='en';
+  var langBtns=document.querySelectorAll('.lang [data-lang]');
+  function applyLang(l){
+    lang=l;
+    document.documentElement.lang=l;
+    document.querySelectorAll('[data-en]').forEach(function(el){
+      var v=el.getAttribute('data-'+l);
+      if(v!=null) el.innerHTML=v;
+    });
+    document.querySelectorAll('[data-en-ph]').forEach(function(el){
+      var v=el.getAttribute('data-'+l+'-ph');
+      if(v!=null) el.setAttribute('placeholder',v);
+    });
+    langBtns.forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===l);});
+  }
+  langBtns.forEach(function(b){b.addEventListener('click',function(){applyLang(b.getAttribute('data-lang'));});});
+
+  /* ---------- mobile nav ---------- */
+  var burger=document.getElementById('burger'),links=document.getElementById('navlinks');
+  burger.addEventListener('click',function(){links.classList.toggle('open');});
+  links.addEventListener('click',function(e){if(e.target.tagName==='A')links.classList.remove('open');});
+
+  /* ---------- menu tabs ---------- */
+  var tabs=document.getElementById('menuTabs');
+  tabs.addEventListener('click',function(e){
+    var b=e.target.closest('button'); if(!b)return;
+    var t=b.getAttribute('data-tab');
+    tabs.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b);});
+    document.querySelectorAll('.menu-panel').forEach(function(p){
+      p.classList.toggle('on',p.getAttribute('data-panel')===t);
+    });
+  });
+
+  /* ---------- reservation form ---------- */
+  var form=document.getElementById('bookForm'),ok=document.getElementById('bookOk');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!form.checkValidity()){form.reportValidity();return;}
+    ok.classList.add('show');
+    form.querySelector('button[type=submit]').textContent = lang==='pt'?'Reserva pedida ✓':'Reservation requested ✓';
+  });
+})();
+</script>
+</body>
+</html>
