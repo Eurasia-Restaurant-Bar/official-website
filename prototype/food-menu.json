@@ -1,0 +1,343 @@
+{
+  "menu": {
+    "starters_entradas": [
+      {
+        "name": "Aalu Jeera",
+        "description": "Batata com cominho",
+        "price": "€3,50"
+      },
+      {
+        "name": "Chicken Samosa (2 Pcs)",
+        "description": "Chamuça de frango (Frango, massa crocante com temperos)",
+        "price": "€2,99"
+      },
+      {
+        "name": "Samosa Veg (2 Pcs)",
+        "description": "Vegetable-Crispy pastry with spiced vegetable (Legumes Chamuça, massa crocante com temperos)",
+        "price": "€2,50"
+      },
+      {
+        "name": "French Fries",
+        "description": "Golden crispy potato fries (Batatas fritas)",
+        "price": "€3,50"
+      },
+      {
+        "name": "Chatpate",
+        "description": "Spicy puffed rice with vegetables (Arroz tufado com legumes e especiarias)",
+        "price": "€4,00"
+      },
+      {
+        "name": "Gilo Chatpate",
+        "description": "Spicy puffed rice with vegetables (Arroz tufado com legumes e especiarias)",
+        "price": "€4,00"
+      },
+      {
+        "name": "Panipuri",
+        "description": "Crispy balls with spiced water (Bolinhas crocantes com água temperada)",
+        "price": "€4,99"
+      },
+      {
+        "name": "Wai Wai Sadheko",
+        "description": "Stir-fried instant noodles with spices (Macarrão instantâneo salteado/frito com especiarias)",
+        "price": "€3,99"
+      },
+      {
+        "name": "Chicken Sadheko",
+        "description": "Spicy marinated chicken salad (Salada de frango picante e temperada)",
+        "price": "€6,50"
+      },
+      {
+        "name": "Soybean Chhoila",
+        "description": "Marinated Soy Chunks, Nepali Style (Pedaços de Soja Marinados ao Estilo do Nepal)",
+        "price": "€4,99"
+      },
+      {
+        "name": "Chicken Nuggets (6 pcs)",
+        "description": "Nuggets de Frango",
+        "price": "€4,50"
+      },
+      {
+        "name": "Chilly Chicken",
+        "description": "Frango Picante – Ao Estilo Nepalês",
+        "price": "€7,99"
+      },
+      {
+        "name": "Kathi Rolls (Veg/Chicken/Eggs)",
+        "description": "Soft flatbread rolled with filling (Pão macio enrolado com recheio)",
+        "price": "€4,00"
+      },
+      {
+        "name": "Bhatmas Sadheko",
+        "description": "Spicy roasted soybeans (Soja torrada e picante)",
+        "price": "€3,50"
+      },
+      {
+        "name": "Chicken Wrap / Wrap de Frango",
+        "description": "Soft tortilla with grilled chicken, fresh vegetables and sauce (Tortilha com frango grelhado, vegetais frescos e molho)",
+        "price": "€4,99"
+      },
+      {
+        "name": "Sausage Fry (2 Pcs)",
+        "description": "Salsicha Frita",
+        "price": "€3,99"
+      },
+      {
+        "name": "Khasi Bhutun Fry",
+        "description": null,
+        "price": "€7,50"
+      },
+      {
+        "name": "Pork Fry",
+        "description": "Porco Frito",
+        "price": "€7,00"
+      },
+      {
+        "name": "Pangra Fry",
+        "description": null,
+        "price": "€5,99"
+      }
+    ],
+    "burgers_and_bread_hamburgueres_e_pao": [
+      {
+        "name": "Veg Burger",
+        "description": "Combo de Hambúrguer Vegetariano",
+        "price": "€6,99"
+      },
+      {
+        "name": "Chicken Burger Set",
+        "description": "Combo de Hambúrguer de Frango",
+        "price": "€6,99"
+      },
+      {
+        "name": "Hamburger Set",
+        "description": "Combo Hambúrguer de Carne Bovina",
+        "price": "€7,99"
+      },
+      {
+        "name": "Double Hamburger Set",
+        "description": "Combo de Hambúrguer Duplo",
+        "price": "€8,99"
+      },
+      {
+        "name": "Bifana",
+        "description": "Traditional Portuguese pork sandwich (Sanduíche tradicional Português de porco)",
+        "price": "€3,99"
+      },
+      {
+        "name": "Bifana Set",
+        "description": "Bifana with drink and fries (Bifana com bebida e batatas fritas)",
+        "price": "€6,50"
+      },
+      {
+        "name": "Tortilla Sandwich",
+        "description": "Sanduíche tortilha",
+        "price": "€6,99"
+      },
+      {
+        "name": "Tortilla Roll with Espresso",
+        "description": "Rolo de Tortilha com Espresso",
+        "price": "€5,99"
+      },
+      {
+        "name": "Egg Sandwich",
+        "description": "sanduíche de ovo",
+        "price": "€4,99"
+      },
+      {
+        "name": "English Breakfast",
+        "description": "served with a cup of coffee (Pequeno-Almoço inglês servido com café)",
+        "price": "€7,50"
+      }
+    ],
+    "nepali_food_comida_nepali": [
+      {
+        "name": "Veg Chowmein",
+        "description": "Stir-fried noodles with vegetables (Noodles fritos com legumes)",
+        "price": "€6,99"
+      },
+      {
+        "name": "Chicken Chowmein",
+        "description": "Stir-fried noodles with chicken (Noodles fritos com mistura de vegetais e frango)",
+        "price": "€7,99"
+      },
+      {
+        "name": "Pork Chowmein",
+        "description": "Stir-fried noodles with pork (Noodles fritos com porco)",
+        "price": "€7,99"
+      },
+      {
+        "name": "Egg Chowmein",
+        "description": "Stir-fried noodles with egg (Noodles fritos com ovo)",
+        "price": "€7,50"
+      },
+      {
+        "name": "Prawn Chowmein",
+        "description": "Stir-fried noodles with prawn & vegetables (Noodles fritos salteados com camarão e legumes)",
+        "price": "€8,50"
+      },
+      {
+        "name": "Mix Chowmein",
+        "description": "Stir-fried noodles with chicken, pork, egg & vegetables (Noodles fritos com frango, porco, ovo e legumes)",
+        "price": "€8,99"
+      },
+      {
+        "name": "Rice with Chicken Curry",
+        "description": null,
+        "price": "€8,50"
+      },
+      {
+        "name": "Rice with Veg Curry / Arroz com Curry de Legumes",
+        "description": null,
+        "price": "€7,50"
+      },
+      {
+        "name": "Rice & Chicken / Arroz e Frango",
+        "description": "Served with plain rice, fried chicken, and fresh salad (Servido com arroz branco, frango frito e salada fresca)",
+        "price": "€9,00"
+      },
+      {
+        "name": "Chicken MoMo",
+        "description": "Steamed dumplings filled with chicken (Dumplings cozidos com recheio de frango)",
+        "price": "€7,99"
+      },
+      {
+        "name": "Veg MoMo",
+        "description": "Steamed dumplings filled with vegetables (Dumplings cozidos com legumes)",
+        "price": "€6,99"
+      },
+      {
+        "name": "Jhol MoMo (Chicken/Veg)",
+        "description": "Steamed dumplings served in a spicy, citric soup (Momo cozidos servidos em uma sopa picante e levemente cítrica)",
+        "price": "€8,99"
+      },
+      {
+        "name": "Chili Momos (Chicken/Veg)",
+        "description": "Steamed dumplings in spicy chili sauce (Momo com Chili – Dumplings cozidos em molho picante)",
+        "price": "€8,99"
+      }
+    ],
+    "special_sets_conjuntos_especiais": [
+      {
+        "name": "Nepali Thali Set",
+        "description": "Original Nepali Thali Set for 5 or more persons (advance booking of minimum 3 hours) / Conjunto Thali Nepali original para 5 ou mais pessoas (reserva com um mínimo de 3 horas de antecedência)",
+        "price": "€11,99"
+      },
+      {
+        "name": "Eurasia Signature Platter / Prato Assinatura Eurasia",
+        "description": "A delicious combination of crispy fried chicken, steamed rice, fresh green salad, and golden potato fries, served with soft drinks (Uma deliciosa combinação de frango frito crocante, arroz branco, salada verde fresca e batatas fritas douradas, servido com refrigerante)",
+        "price": "€12,50"
+      }
+    ],
+    "salads_saladas": [
+      {
+        "name": "Mix Veg Salad",
+        "description": "Fresh seasonal vegetables with light dressing (Legumes frescos da estação com molho leve)",
+        "price": "€4,99"
+      },
+      {
+        "name": "Apple Salad",
+        "description": "Salada de Maçã",
+        "price": "€5,50"
+      },
+      {
+        "name": "Caprese Salad",
+        "description": "Fresh mozzarella, tomato, and Balsamic (Mozzarella fresca, tomate e balsâmico)",
+        "price": "€5,99"
+      }
+    ],
+    "pasta_massas": [
+      {
+        "name": "Pasta with Mushroom Sauce",
+        "description": "Massa com Molho de Cogumelos",
+        "price": "€6,99"
+      },
+      {
+        "name": "Spaghetti with Mushroom Sauce",
+        "description": "Esparguete com Molho de Cogumelos",
+        "price": "€6,99"
+      },
+      {
+        "name": "Spaghetti with Mushroom Sauce with (Chicken or Pork)",
+        "description": "Espaguete com Molho de Cogumelos e Frango ou Porco",
+        "price": "€7,99"
+      },
+      {
+        "name": "Pasta with Mushroom Sauce with (Chicken or Pork)",
+        "description": "Massa com Molho de Cogumelos e Frango ou Porco",
+        "price": "€7,99"
+      },
+      {
+        "name": "Ramen Veg",
+        "description": "Mixed vegetables and noodles / Vegetarian Ramen (mistura de legumes e macarrão)",
+        "price": "€6,99"
+      },
+      {
+        "name": "Ramen Egg",
+        "description": "Mix vegetable, Egg and noodles (Ramen com ovo - mistura de legumes, ovo e macarrão)",
+        "price": "€7,99"
+      },
+      {
+        "name": "Ramen chicken or pork",
+        "description": "Mixed vegetable, noodles and pork or chicken (Ramen de frango ou porco - mistura de legumes, macarrão e frango ou porco)",
+        "price": "€9,50"
+      }
+    ],
+    "drinks_bebidas": {
+      "beer_cerveja": [
+        { "name": "Sagres / Super Bock (1L)", "price": "€3,50" },
+        { "name": "Sagres / Super Bock (330ml)", "price": "€1,50" },
+        { "name": "Sagres / Super Bock (220ml)", "price": "€1,10" },
+        { "name": "Somersby", "price": "€2,50" },
+        { "name": "Draft Beer", "price": "€1,00" },
+        { "name": "Pint", "price": "€2,50" }
+      ],
+      "whiskey_whisky": [
+        { "name": "Jameson Select", "price": "€3,50" },
+        { "name": "Jack Daniel's", "price": "€4,50" },
+        { "name": "Black Label", "price": "€4,50" },
+        { "name": "Red Label", "price": "€3,50" },
+        { "name": "Famous Grouse", "price": "€3,50" },
+        { "name": "Grant's", "price": "€3,50" },
+        { "name": "Ballantines", "price": "€3,50" }
+      ],
+      "gin_gin": [
+        { "name": "Beefeater Dry", "price": "€4,50" },
+        { "name": "Bombay Dry", "price": "€4,50" }
+      ],
+      "liqueurs_licores": [
+        { "name": "Ginjinha", "price": "€2,50" },
+        { "name": "Amarguinha", "price": "€2,50" },
+        { "name": "Baileys", "price": "€3,50" },
+        { "name": "Licor Beirão", "price": "€3,50" },
+        { "name": "Macieira", "price": "€3,00" }
+      ],
+      "wine_vinhos": [
+        { "name": "Porto Tawny", "price": "€4,00" },
+        { "name": "Porto White", "price": "€4,00" },
+        { "name": "Monte Velho Red", "price": "€3,50" },
+        { "name": "Monte Velho White", "price": "€3,50" }
+      ],
+      "vodka_and_tequila": [
+        { "name": "Eristoff", "price": "€4,00" },
+        { "name": "Absolut", "price": "€4,00" },
+        { "name": "Tequila - 50 ml", "price": "€3,00" }
+      ],
+      "sangria": [
+        {
+          "name": "White Sangria",
+          "description": "Fruity white sangria / Branca – Sangria branca frutada (Brandy Constantino, Vodka, Moscatel, Açúcar mascavado, Gasosa, gelo, vinho branco, hortelã, laranja, canela, maçã e limão)",
+          "price": "€12,00"
+        },
+        {
+          "name": "Red Sangria",
+          "description": "Fruity red sangria / Tinto – Sangria tinta frutada (Brandy Constantino, Vodka, Moscatel, Açúcar Mascavado, Gasosa, Gelo, Vinho Branco, Hortelã, Laranja, Canela, Maçã e Lima)",
+          "price": "€12,00"
+        }
+      ]
+    }
+  },
+  "notes": {
+    "en": "Items not requested or consumed will not be charged. Prices include VAT at the legally applicable rate.",
+    "pt": "Itens não solicitados ou não consumidos não serão cobrados. Preços com IVA incluído à taxa legal em vigor."
+  }
+}

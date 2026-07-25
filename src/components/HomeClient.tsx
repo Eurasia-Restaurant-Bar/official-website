@@ -11,6 +11,7 @@ import Gallery from "./Gallery";
 import Reviews from "./Reviews";
 import Visit from "./Visit";
 import Footer from "./Footer";
+import MobileApp from "./mobile/MobileApp";
 
 export default function HomeClient({
   categories,
@@ -23,16 +24,19 @@ export default function HomeClient({
 }) {
   return (
     <LangProvider>
-      <Nav />
-      <a id="top"></a>
-      <Hero />
-      <Story />
-      <Highlights />
-      <MenuSection categories={categories} items={items} />
-      <Gallery />
-      <Reviews googlePlace={googlePlace} />
-      <Visit />
-      <Footer />
+      <div className="desktop-shell">
+        <Nav />
+        <a id="top"></a>
+        <Hero />
+        <Story />
+        <Highlights />
+        <MenuSection categories={categories} items={items} />
+        <Gallery />
+        <Reviews googlePlace={googlePlace} />
+        <Visit />
+        <Footer />
+      </div>
+      <MobileApp categories={categories} items={items} googlePlace={googlePlace} />
     </LangProvider>
   );
 }

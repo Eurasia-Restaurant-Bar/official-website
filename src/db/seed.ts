@@ -6,15 +6,11 @@ import { menuCategories, menuItems } from "./schema";
 import { seedCategories, seedItems } from "./seed-data";
 
 async function main() {
-  console.log("Seeding menu categories...");
-  const insertedCategories = await db
-    .insert(menuCategories)
-    .values(seedCategories)
-    .onConflictDoNothing({ target: menuCategories.slug })
-    .returning();
+  console.log("Clearing existing menu (categories cascade-delete their items)...");
+  await db.delete(menuCategories);
 
-  const categories =
-    insertedCategories.length > 0 ? insertedCategories : await db.select().from(menuCategories);
+  console.log("Seeding menu categories...");
+  const categories = await db.insert(menuCategories).values(seedCategories).returning();
   const categoryIdBySlug = new Map(categories.map((c) => [c.slug, c.id]));
 
   console.log("Seeding menu items...");

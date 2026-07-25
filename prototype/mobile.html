@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
+<title>Eurasia — Nepalese Kitchen · Lisboa (App)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:oklch(98.5% 0.003 60);
+  --surface:oklch(100% 0 0);
+  --panel:oklch(96% 0.004 40);
+  --ink:oklch(20% 0.008 40);
+  --fg:oklch(28% 0.01 40);
+  --muted:oklch(50% 0.01 45);
+  --border:oklch(90% 0.006 50);
+  --accent:oklch(54% 0.22 27);
+  --accent-d:oklch(47% 0.20 27);
+  --accent-soft:oklch(54% 0.22 27/.1);
+  --dark:oklch(17% 0.012 30);
+  --veg:oklch(52% 0.13 145);
+  --font-display:'Cormorant Garamond',Georgia,serif;
+  --font-ui:-apple-system,BlinkMacSystemFont,'SF Pro Text','Manrope',system-ui,sans-serif;
+  --tabbar-h:74px;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{
+  font-family:var(--font-ui);color:var(--fg);
+  background:#0c0d10; /* gutter behind phone on wide screens */
+  display:flex;justify-content:center;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%}
+button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit}
+a{color:inherit;text-decoration:none}
+
+/* ---------- phone shell ---------- */
+.app{
+  position:relative;width:100%;max-width:430px;min-height:100dvh;
+  background:var(--bg);overflow:hidden;
+  display:flex;flex-direction:column;
+}
+@media(min-width:460px){
+  .app{margin:24px 0;min-height:auto;height:calc(100dvh - 48px);border-radius:44px;
+    box-shadow:0 40px 90px rgba(0,0,0,.55),0 0 0 11px #111,0 0 0 13px #2a2a2a;}
+}
+
+/* status bar */
+.statusbar{display:flex;justify-content:space-between;align-items:center;
+  padding:11px 26px 6px;font-size:14px;font-weight:700;color:var(--ink);flex:none;z-index:30}
+.statusbar .sig{display:flex;gap:6px;align-items:center}
+.statusbar svg{display:block}
+
+/* app bar */
+.appbar{position:relative;flex:none;display:flex;align-items:center;justify-content:space-between;
+  padding:4px 16px 12px;z-index:20}
+.appbar.on-hero{position:absolute;top:34px;left:0;right:0}
+.appbar .logo{height:52px;filter:none;mix-blend-mode:multiply}
+.appbar.on-hero .logo{mix-blend-mode:normal;filter:drop-shadow(0 2px 6px rgba(0,0,0,.4))}
+.icon-btn{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;
+  background:color-mix(in oklab,var(--surface) 78%,transparent);backdrop-filter:blur(8px);color:var(--ink)}
+.appbar.on-hero .icon-btn{background:rgba(255,255,255,.16);color:#fff}
+.lang-mini{font-size:12px;font-weight:800;letter-spacing:.03em;padding:0 4px}
+.lang-mini .off{opacity:.4}
+
+/* ---------- screens ---------- */
+.screens{position:relative;flex:1;overflow:hidden}
+.screen{position:absolute;inset:0;overflow-y:auto;-webkit-overflow-scrolling:touch;
+  padding-bottom:calc(var(--tabbar-h) + 24px);display:none}
+.screen.active{display:block;animation:fade .28s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.pad{padding:0 18px}
+.sec-title{font-family:var(--font-display);font-size:27px;font-weight:600;color:var(--ink);letter-spacing:-.01em;margin:26px 0 4px}
+.sec-sub{font-size:13px;color:var(--muted);margin-bottom:16px}
+.eyebrow{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+
+/* ---------- HOME hero ---------- */
+.hero{position:relative;height:74vh;min-height:520px;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:0 20px 26px;
+  background:
+    linear-gradient(180deg,oklch(15% .01 30/.35) 0%,transparent 26%,oklch(14% .01 30/.15) 50%,oklch(13% .01 30/.82) 84%,oklch(12% .01 30/.95) 100%),
+    url('ms09i87h-hero-momo.jpg') center/cover no-repeat;
+  background-color:var(--dark);}
+.hero .greet{font-size:13px;font-weight:700;letter-spacing:.04em;color:rgba(255,255,255,.8);text-transform:uppercase}
+.hero h1{font-family:var(--font-display);font-weight:600;font-size:44px;line-height:1.02;letter-spacing:-.01em;margin:8px 0 6px}
+.hero h1 em{font-style:italic;color:oklch(72% .14 40)}
+.hero p{font-size:14.5px;color:rgba(255,255,255,.78);max-width:30ch;line-height:1.5}
+.open-chip{display:inline-flex;align-items:center;gap:7px;margin-top:16px;font-size:12px;font-weight:700;
+  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.2);padding:7px 13px;border-radius:999px;backdrop-filter:blur(6px)}
+.dot{width:7px;height:7px;border-radius:50%;background:oklch(72% .17 145);box-shadow:0 0 0 3px oklch(72% .17 145/.3)}
+
+/* quick actions */
+.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:-30px 18px 0;position:relative;z-index:5}
+.qa{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:14px 8px;text-align:center;
+  box-shadow:0 12px 30px oklch(30% .04 40/.1);transition:transform .12s}
+.qa:active{transform:scale(.96)}
+.qa svg{margin:0 auto 7px;color:var(--accent)}
+.qa b{display:block;font-size:12.5px;font-weight:700;color:var(--ink)}
+
+/* horizontal picks */
+.hscroll{display:flex;gap:14px;overflow-x:auto;padding:2px 18px 6px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.hscroll::-webkit-scrollbar{display:none}
+.pick{flex:0 0 76%;scroll-snap-align:start;background:var(--surface);border:1px solid var(--border);border-radius:20px;overflow:hidden}
+.pick .ph{height:150px;position:relative;background:
+  radial-gradient(90% 80% at 30% 20%,oklch(86% .06 28/.7),transparent 60%),linear-gradient(150deg,var(--panel),oklch(93% .008 40));}
+.pick .ph::after{content:attr(data-label);position:absolute;left:12px;bottom:10px;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);background:color-mix(in oklab,var(--surface) 72%,transparent);padding:4px 9px;border-radius:999px;border:1px solid var(--border)}
+.pick .pb{padding:13px 15px 16px}
+.pick .pb .r{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.pick h3{font-family:var(--font-display);font-size:21px;font-weight:600;color:var(--ink)}
+.pick .price{font-weight:800;color:var(--accent);font-size:15px}
+.pick p{font-size:12.5px;color:var(--muted);margin-top:5px;line-height:1.45}
+
+/* story card */
+.story-card{margin:20px 18px 0;border-radius:22px;overflow:hidden;background:var(--dark);color:#fff;padding:24px 22px}
+.story-card h3{font-family:var(--font-display);font-size:26px;font-weight:600;margin:8px 0 10px}
+.story-card p{font-size:14px;color:rgba(255,255,255,.75);line-height:1.55}
+.story-card .link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:13px;font-weight:700;color:oklch(72% .14 40)}
+
+/* ---------- MENU ---------- */
+.menu-head{padding:6px 18px 0}
+.chips{display:flex;gap:9px;overflow-x:auto;padding:14px 18px;position:sticky;top:0;z-index:8;
+  background:color-mix(in oklab,var(--bg) 88%,transparent);backdrop-filter:blur(12px);-webkit-overflow-scrolling:touch}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;font-size:13px;font-weight:700;padding:9px 16px;border-radius:999px;background:var(--surface);
+  border:1px solid var(--border);color:var(--fg);white-space:nowrap;transition:.15s}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.mrow{display:flex;align-items:flex-start;gap:12px;padding:16px 18px;border-bottom:1px solid var(--border)}
+.mrow .mimg{flex:none;width:60px;height:60px;border-radius:14px;background:
+  radial-gradient(90% 80% at 30% 20%,oklch(86% .06 28/.7),transparent 60%),linear-gradient(150deg,var(--panel),oklch(93% .008 40));
+  border:1px solid var(--border)}
+.mrow .mc{flex:1;min-width:0}
+.mrow .mtop{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.mrow .mname{font-family:var(--font-display);font-size:20px;font-weight:600;color:var(--ink)}
+.mrow .mprice{font-weight:800;color:var(--accent);font-size:15px;white-space:nowrap}
+.mrow .mdesc{font-size:12.5px;color:var(--muted);margin-top:3px;line-height:1.4}
+.badge{font-size:9.5px;font-weight:800;letter-spacing:.05em;border-radius:5px;padding:1px 5px;margin-left:6px;vertical-align:middle}
+.badge.v{color:var(--veg);border:1px solid oklch(52% .13 145/.4)}
+.badge.s{color:var(--accent);border:1px solid oklch(54% .22 27/.4)}
+.menu-note{font-size:12px;color:var(--muted);padding:18px;line-height:1.5}
+
+/* ---------- REVIEWS ---------- */
+.rev-hero{background:var(--dark);color:#fff;padding:30px 22px 26px;text-align:center}
+.rev-score{font-family:var(--font-display);font-size:60px;font-weight:600;color:oklch(72% .14 40);line-height:1}
+.rev-stars{color:oklch(72% .16 55);font-size:19px;letter-spacing:3px;margin-top:2px}
+.rev-hero small{display:block;font-size:12px;color:rgba(255,255,255,.55);margin-top:8px}
+.rcard{margin:16px 18px 0;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:18px}
+.rcard .rs{color:oklch(72% .16 55);font-size:13px;letter-spacing:2px}
+.rcard p{font-family:var(--font-display);font-size:19px;font-style:italic;color:var(--ink);line-height:1.35;margin:10px 0 14px}
+.rwho{display:flex;align-items:center;gap:11px}
+.rav{width:36px;height:36px;border-radius:50%;background:linear-gradient(140deg,var(--accent),oklch(72% .14 40));
+  display:grid;place-items:center;color:#fff;font-weight:800;font-size:14px}
+.rwho b{font-size:13.5px;color:var(--ink)}
+.rwho span{display:block;font-size:11.5px;color:var(--muted)}
+.sample{display:block;text-align:center;margin:22px 18px 0;font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--muted);border:1px dashed var(--border);padding:9px;border-radius:12px}
+
+/* ---------- VISIT ---------- */
+.contact-row{display:flex;align-items:center;gap:14px;margin:0 18px;padding:16px 0;border-bottom:1px solid var(--border)}
+.contact-row .ci{width:44px;height:44px;flex:none;border-radius:13px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center}
+.contact-row b{font-size:15px;color:var(--ink);font-weight:700}
+.contact-row span{display:block;font-size:12.5px;color:var(--muted);margin-top:1px}
+.contact-row .chev{margin-left:auto;color:var(--muted)}
+.hours{margin:8px 18px 0}
+.hrow{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--border);font-size:14px}
+.hrow.today{font-weight:800;color:var(--ink)}
+.hrow.today .t{color:var(--accent)}
+.hrow .d{color:var(--fg)}.hrow .t{color:var(--muted)}
+.map{margin:18px;border-radius:20px;overflow:hidden;border:1px solid var(--border);height:200px;position:relative;
+  background:linear-gradient(0deg,oklch(88% .02 70) 1px,transparent 1px) 0 0/100% 40px,
+    linear-gradient(90deg,oklch(88% .02 70) 1px,transparent 1px) 0 0/40px 100%,
+    linear-gradient(160deg,oklch(93% .02 70),oklch(90% .03 150));}
+.map .river{position:absolute;left:-5%;bottom:16%;width:110%;height:52px;background:oklch(78% .06 220/.5);transform:rotate(-6deg);border-radius:40px}
+.map .pin{position:absolute;left:50%;top:42%;transform:translate(-50%,-100%)}
+.map .pin .lbl{position:absolute;left:50%;top:6px;transform:translateX(-50%);background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:5px 10px;border-radius:999px;white-space:nowrap}
+
+/* ---------- tab bar ---------- */
+.tabbar{position:absolute;left:0;right:0;bottom:0;height:var(--tabbar-h);z-index:40;
+  display:flex;align-items:flex-start;justify-content:space-around;padding:9px 8px 0;
+  background:color-mix(in oklab,var(--surface) 86%,transparent);backdrop-filter:blur(22px) saturate(1.4);
+  border-top:1px solid var(--border);padding-bottom:env(safe-area-inset-bottom)}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:var(--muted);font-size:10.5px;font-weight:700;padding-top:2px}
+.tab svg{display:block}
+.tab.on{color:var(--accent)}
+.tab.book{flex:none;margin-top:-24px}
+.tab.book .fab{width:58px;height:58px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;
+  box-shadow:0 12px 26px oklch(54% .22 27/.45);border:4px solid var(--bg);transition:transform .12s}
+.tab.book:active .fab{transform:scale(.92)}
+.tab.book span{margin-top:5px;color:var(--accent)}
+
+/* home indicator */
+.home-ind{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);width:128px;height:5px;border-radius:3px;background:var(--ink);opacity:.28;z-index:50;pointer-events:none}
+@media(max-width:459px){.home-ind{display:none}}
+
+/* ---------- reservation sheet ---------- */
+.scrim{position:absolute;inset:0;background:rgba(10,10,12,.5);opacity:0;pointer-events:none;transition:opacity .28s;z-index:60}
+.scrim.open{opacity:1;pointer-events:auto}
+.sheet{position:absolute;left:0;right:0;bottom:0;z-index:70;background:var(--surface);
+  border-radius:26px 26px 0 0;padding:10px 20px calc(24px + env(safe-area-inset-bottom));
+  transform:translateY(100%);transition:transform .32s cubic-bezier(.32,.72,0,1);max-height:92%;overflow-y:auto}
+.sheet.open{transform:none}
+.grab{width:40px;height:5px;border-radius:3px;background:var(--border);margin:0 auto 14px}
+.sheet h2{font-family:var(--font-display);font-size:28px;font-weight:600;color:var(--ink)}
+.sheet .sub{font-size:13px;color:var(--muted);margin:2px 0 18px}
+.field{margin-bottom:15px}
+.field label{display:block;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+.field input,.field select{width:100%;font-family:inherit;font-size:16px;color:var(--ink);background:var(--panel);
+  border:1px solid var(--border);border-radius:13px;padding:13px 14px;appearance:none}
+.field input:focus,.field select:focus{outline:none;border-color:var(--accent);background:var(--surface)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stepper{display:flex;align-items:center;justify-content:space-between;background:var(--panel);border:1px solid var(--border);border-radius:13px;padding:6px 8px}
+.stepper button{width:42px;height:42px;border-radius:10px;background:var(--surface);border:1px solid var(--border);font-size:22px;color:var(--ink);display:grid;place-items:center}
+.stepper .val{font-size:18px;font-weight:800;color:var(--ink)}
+.seg{display:flex;gap:8px}
+.seg button{flex:1;padding:12px;border-radius:12px;background:var(--panel);border:1px solid var(--border);font-size:13px;font-weight:700;color:var(--fg)}
+.seg button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.cta{width:100%;background:var(--accent);color:#fff;font-size:16px;font-weight:800;padding:16px;border-radius:15px;margin-top:6px;transition:transform .12s}
+.cta:active{transform:scale(.98)}
+.sheet-ok{display:none;text-align:center;padding:26px 8px 8px}
+.sheet-ok.show{display:block}
+.sheet-ok .tick{width:66px;height:66px;border-radius:50%;background:oklch(72% .17 145/.14);color:oklch(46% .15 145);display:grid;place-items:center;margin:0 auto 16px}
+.sheet-ok h2{margin-bottom:8px}
+.sheet-ok p{font-size:14px;color:var(--muted);line-height:1.55;max-width:32ch;margin:0 auto}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+
+  <!-- status bar -->
+  <div class="statusbar">
+    <span>9:41</span>
+    <span class="sig">
+      <svg width="18" height="12" viewBox="0 0 18 12" fill="currentColor"><rect x="0" y="7" width="3" height="5" rx="1"/><rect x="5" y="4" width="3" height="8" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
+      <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 4.5C4.5 1.5 11.5 1.5 15 4.5M3.2 7C5.5 5 10.5 5 12.8 7M5.5 9.5C6.8 8.5 9.2 8.5 10.5 9.5"/></svg>
+      <svg width="26" height="13" viewBox="0 0 26 13" fill="none"><rect x="1" y="1.5" width="21" height="10" rx="3" stroke="currentColor" stroke-width="1.2" opacity=".5"/><rect x="3" y="3.5" width="16" height="6" rx="1.5" fill="currentColor"/><rect x="23.5" y="4.5" width="2" height="4" rx="1" fill="currentColor" opacity=".5"/></svg>
+    </span>
+  </div>
+
+  <!-- app bar (transparent over hero on Home) -->
+  <div class="appbar on-hero" id="appbar">
+    <button class="icon-btn" id="menuFab" aria-label="Menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <img class="logo" src="ms097wqq-logo.png" alt="Eurasia Restaurant & Bar">
+    <button class="icon-btn lang-mini" id="langBtn" aria-label="Language"><span class="l-en">EN</span><span class="l-pt off">PT</span></button>
+  </div>
+
+  <!-- screens -->
+  <div class="screens" id="screens">
+
+    <!-- HOME -->
+    <section class="screen active" data-screen="home" id="scr-home">
+      <div class="hero">
+        <span class="greet" data-en="Namaste, Lisboa" data-pt="Namaste, Lisboa">Namaste, Lisboa</span>
+        <h1 data-en="Handmade momo &amp; <em>Himalayan</em> fire." data-pt="Momo artesanal &amp; <em>fogo</em> do Himalaia.">Handmade momo &amp; <em>Himalayan</em> fire.</h1>
+        <p data-en="Nepalese family recipes, served warm in the heart of the city." data-pt="Receitas de família nepalesas, servidas no coração da cidade.">Nepalese family recipes, served warm in the heart of the city.</p>
+        <span class="open-chip"><span class="dot"></span><span data-en="Open now · closes 23:00" data-pt="Aberto · fecha 23:00">Open now · closes 23:00</span></span>
+      </div>
+
+      <div class="quick">
+        <button class="qa" id="qaBook">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>
+          <b data-en="Reserve" data-pt="Reservar">Reserve</b>
+        </button>
+        <a class="qa" href="tel:+351000000000">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3h4l2 5-3 2a12 12 0 006 6l2-3 5 2v4a2 2 0 01-2 2A17 17 0 013 5a2 2 0 012-2z"/></svg>
+          <b data-en="Call" data-pt="Ligar">Call</b>
+        </a>
+        <a class="qa" href="https://maps.google.com/?q=Eurasia+Restaurant+Bar+Lisboa" target="_blank" rel="noopener">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.7 7-12a7 7 0 10-14 0c0 5.3 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <b data-en="Directions" data-pt="Rota">Directions</b>
+        </a>
+      </div>
+
+      <div class="pad"><h2 class="sec-title" data-en="Chef's picks" data-pt="Escolhas do chef">Chef's picks</h2></div>
+      <div class="hscroll">
+        <article class="pick"><div class="ph" data-label="Steamed momo"></div><div class="pb"><div class="r"><h3>Jhol Momo</h3><span class="price">€10,00</span></div><p data-en="Dumplings in warm sesame-tomato broth." data-pt="Dumplings em caldo de sésamo e tomate.">Dumplings in warm sesame-tomato broth.</p></div></article>
+        <article class="pick"><div class="ph" data-label="Charcoal grill"></div><div class="pb"><div class="r"><h3>Chicken Sekuwa</h3><span class="price">€13,00</span></div><p data-en="Charcoal-grilled, timur pepper, beaten rice." data-pt="Grelhado no carvão, pimenta timur, arroz batido.">Charcoal-grilled, timur pepper, beaten rice.</p></div></article>
+        <article class="pick"><div class="ph" data-label="Thali set"></div><div class="pb"><div class="r"><h3>Thakali Thali</h3><span class="price">€14,50</span></div><p data-en="Rice, dal, curry, greens &amp; pickle." data-pt="Arroz, dal, caril, verduras &amp; pickle.">Rice, dal, curry, greens &amp; pickle.</p></div></article>
+      </div>
+
+      <div class="story-card">
+        <span class="eyebrow" style="color:oklch(72% .14 40)" data-en="Our story" data-pt="A nossa história">Our story</span>
+        <h3 data-en="Two continents, one table." data-pt="Dois continentes, uma mesa.">Two continents, one table.</h3>
+        <p data-en="We carried our grandmother's spice tin from Kathmandu to Lisbon. Every momo is folded by hand each morning." data-pt="Trouxemos a lata de especiarias da avó de Katmandu para Lisboa. Cada momo é dobrado à mão todas as manhãs.">We carried our grandmother's spice tin from Kathmandu to Lisbon. Every momo is folded by hand each morning.</p>
+        <button class="link" data-nav="menu" data-en="Explore the menu →" data-pt="Ver a ementa →">Explore the menu →</button>
+      </div>
+    </section>
+
+    <!-- MENU -->
+    <section class="screen" data-screen="menu" id="scr-menu">
+      <div class="menu-head"><h2 class="sec-title" data-en="Menu" data-pt="Ementa">Menu</h2><p class="sec-sub" data-en="Prices in € · sample menu" data-pt="Preços em € · ementa de exemplo">Prices in € · sample menu</p></div>
+      <div class="chips" id="chips">
+        <button class="chip on" data-cat="all" data-en="All" data-pt="Tudo">All</button>
+        <button class="chip" data-cat="momo">Momo</button>
+        <button class="chip" data-cat="grill" data-en="Grill" data-pt="Grelhados">Grill</button>
+        <button class="chip" data-cat="curry" data-en="Curries" data-pt="Caris">Curries</button>
+        <button class="chip" data-cat="sides" data-en="Sides" data-pt="Acompanh.">Sides</button>
+        <button class="chip" data-cat="drinks" data-en="Drinks" data-pt="Bebidas">Drinks</button>
+      </div>
+      <div id="menuList">
+        <!-- momo -->
+        <div class="mrow" data-cat="momo"><div class="mimg"></div><div class="mc"><div class="mtop"><span class="mname">Chicken Momo</span><span class="mprice">€8,50</span></div><p class="mdesc" data-en="Steamed or fried · 10 pcs" data-pt="Ao vapor ou frito · 10 un">Steamed or fried · 10 pcs</p></div></div>
+        <div class="mrow" data-cat="momo"><div class="mimg"></div><div class="mc"><div class="mtop"><span class="mname">Veg Momo<span class="badge v">VEG</span></span><span class="mprice">€7,50</span></div><p class="mdesc" data-en="Cabbage, carrot, paneer · 10 pcs" data-pt="Couve, cenoura, paneer · 10 un">Cabbage, carrot, paneer · 10 pcs</p></div></div>
+        <div class="mrow" data-cat="momo"><div class="mimg"></div><div class="mc"><div class="mtop"><span class="mname">Jhol Momo<span class="badge s">🌶</span></span><span class="mprice">€10,00</span></div><p class="mdesc" data-en="In warm sesame-tomato broth" data-pt="Em caldo de sésamo e tomate">In warm sesame-tomato broth</p></div></div>
+        <!-- grill -->
+        <div class="mrow" data-cat="grill"><div class="mimg"></div><div class="mc"><div class="mtop"><span class="mname">Chicken Sekuwa<span class="badge s">🌶</span></span><span class="mprice">€13,00</span></div><p class="mdesc" data-en="Charcoal-grilled, timur pepper" data-pt="Grelhado no carvão, pimenta timur">Charcoal-grilled, timur pepper</p></div></div>
+        <div class="mrow" data-cat="grill"><div class="mimg"></div><div class="mc"><div class="mtop"><span class="mname">Chicken Choila</span><span class="mprice">€9,50</span></div><p class="mdesc" data-en="Newari smoked chicken, mustard oil" data-pt="Frango fumado newari, óleo de mostarda">Newari smoked chicken, mustard oil</p></div></div>
+        <div class="mrow" data-cat="grill"><div class="mimg"></div><div class="mc"><div class="mtop"><span class="mname">Paneer Tikka<span class="badge v">VEG</span></span><span class="mprice">€10,50</span></div><p class="mdesc" data-en="Chargrilled cottage cheese" data-pt="Queijo fresco grelhado">Chargrilled cottage cheese</p></div></div>
+        <!-- curry -->
+        <div class="mrow" data-cat="curry"><div class="mimg"></div><div class="mc"><div class="mtop"><span class="mname">Thakali Thali</span><span class="mprice">€14,50</span></div><p class="mdesc" data-en="Rice, dal, curry, greens, pickle" data-pt="Arroz, dal, caril, verduras, pickle">Rice, dal, curry, greens, pickle</p></div></div>
+        <div class="mrow" data-cat="curry"><div class="mimg"></div><div class="mc"><div class="mtop"><span class="mname">Goat Curry<span class="badge s">🌶</span></span><span class="mprice">€15,00</span></div><p class="mdesc" data-en="Bone-in, slow-cooked" data-pt="Com osso, cozinhado lento">Bone-in, slow-cooked</p></div></div>
+        <div class="mrow" data-cat="curry"><div class="mimg"></div><div class="mc"><div class="mtop"><span class="mname">Dal Bhat<span class="badge v">VEG</span></span><span class="mprice">€12,00</span></div><p class="mdesc" data-en="Lentil soup, rice, seasonal veg" data-pt="Sopa de lentilhas, arroz, legumes">Lentil soup, rice, seasonal veg</p></div></div>
+        <!-- sides -->
+        <div class="mrow" data-cat="sides"><div class="mimg"></div><div class="mc"><div class="mtop"><span class="mname">Chicken Chowmein</span><span class="mprice">€9,00</span></div><p class="mdesc" data-en="Wok noodles, Nepali spices" data-pt="Noodles de wok, especiarias nepalesas">Wok noodles, Nepali spices</p></div></div>
+        <div class="mrow" data-cat="sides"><div class="mimg"></div><div class="mc"><div class="mtop"><span class="mname">Garlic Naan<span class="badge v">VEG</span></span><span class="mprice">€3,50</span></div><p class="mdesc" data-en="Clay-oven flatbread" data-pt="Pão do forno de barro">Clay-oven flatbread</p></div></div>
+        <!-- drinks -->
+        <div class="mrow" data-cat="drinks"><div class="mimg"></div><div class="mc"><div class="mtop"><span class="mname">Masala Chai</span><span class="mprice">€3,00</span></div><p class="mdesc" data-en="Spiced Himalayan milk tea" data-pt="Chá de leite himalaio especiado">Spiced Himalayan milk tea</p></div></div>
+        <div class="mrow" data-cat="drinks"><div class="mimg"></div><div class="mc"><div class="mtop"><span class="mname">Mango Lassi</span><span class="mprice">€4,00</span></div><p class="mdesc" data-en="Whipped yoghurt drink" data-pt="Bebida de iogurte batido">Whipped yoghurt drink</p></div></div>
+      </div>
+      <p class="menu-note" data-en="Sample dishes &amp; prices — to be confirmed with the restaurant. VEG = vegetarian · 🌶 = spicier." data-pt="Pratos &amp; preços de exemplo — a confirmar com o restaurante. VEG = vegetariano · 🌶 = mais picante.">Sample dishes &amp; prices — to be confirmed with the restaurant. VEG = vegetarian · 🌶 = spicier.</p>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="screen" data-screen="reviews" id="scr-reviews">
+      <div class="rev-hero">
+        <div class="rev-score">4,7</div>
+        <div class="rev-stars">★★★★★</div>
+        <small data-en="Sample rating — connect Google Reviews for live scores" data-pt="Classificação de exemplo — ligar Google Reviews">Sample rating — connect Google Reviews for live scores</small>
+      </div>
+      <article class="rcard"><div class="rs">★★★★★</div><p data-en="&ldquo;The jhol momo took me straight back to Thamel.&rdquo;" data-pt="&ldquo;O jhol momo levou-me directo a Thamel.&rdquo;">&ldquo;The jhol momo took me straight back to Thamel.&rdquo;</p><div class="rwho"><div class="rav">A</div><div><b>Ana R.</b><span data-en="Local guide · Lisboa" data-pt="Guia local · Lisboa">Local guide · Lisboa</span></div></div></article>
+      <article class="rcard"><div class="rs">★★★★★</div><p data-en="&ldquo;Warm staff, huge portions, real charcoal sekuwa.&rdquo;" data-pt="&ldquo;Equipa simpática, doses enormes, sekuwa de carvão a sério.&rdquo;">&ldquo;Warm staff, huge portions, real charcoal sekuwa.&rdquo;</p><div class="rwho"><div class="rav">M</div><div><b>Miguel S.</b><span data-en="Diner" data-pt="Cliente">Diner</span></div></div></article>
+      <article class="rcard"><div class="rs">★★★★☆</div><p data-en="&ldquo;Finally a proper thali in the city. Great veg options.&rdquo;" data-pt="&ldquo;Finalmente um thali a sério na cidade. Óptimas opções veg.&rdquo;">&ldquo;Finally a proper thali in the city. Great veg options.&rdquo;</p><div class="rwho"><div class="rav">S</div><div><b>Sofia &amp; Deepak</b><span data-en="Regulars" data-pt="Habituais">Regulars</span></div></div></article>
+      <span class="sample" data-en="◆ Sample reviews — real Google &amp; Facebook to be embedded" data-pt="◆ Avaliações de exemplo — Google &amp; Facebook a integrar">◆ Sample reviews — real Google &amp; Facebook to be embedded</span>
+    </section>
+
+    <!-- VISIT -->
+    <section class="screen" data-screen="visit" id="scr-visit">
+      <div class="pad"><h2 class="sec-title" data-en="Visit us" data-pt="Visite-nos">Visit us</h2><p class="sec-sub">Lisboa, Portugal</p></div>
+      <div class="map">
+        <div class="river"></div>
+        <div class="pin"><div class="lbl">Eurasia · Lisboa</div>
+          <svg width="30" height="40" viewBox="0 0 34 44" fill="none"><path d="M17 43C17 43 32 27 32 16C32 7.7 25.3 1 17 1C8.7 1 2 7.7 2 16C2 27 17 43 17 43Z" fill="var(--accent)"/><circle cx="17" cy="16" r="6" fill="#fff"/></svg>
+        </div>
+      </div>
+      <a class="contact-row" href="https://maps.google.com/?q=Eurasia+Restaurant+Bar+Lisboa" target="_blank" rel="noopener">
+        <span class="ci"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.7 7-12a7 7 0 10-14 0c0 5.3 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></span>
+        <div><b data-en="Get directions" data-pt="Obter rota">Get directions</b><span data-en="Lisboa · exact address to be confirmed" data-pt="Lisboa · morada exacta a confirmar">Lisboa · exact address to be confirmed</span></div>
+        <span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="contact-row" href="tel:+351000000000">
+        <span class="ci"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3h4l2 5-3 2a12 12 0 006 6l2-3 5 2v4a2 2 0 01-2 2A17 17 0 013 5a2 2 0 012-2z"/></svg></span>
+        <div><b data-en="Call the restaurant" data-pt="Ligar ao restaurante">Call the restaurant</b><span data-en="Phone — to be confirmed" data-pt="Telefone — a confirmar">Phone — to be confirmed</span></div>
+        <span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="contact-row" href="https://www.facebook.com/p/Eurasia-Restaurant-Bar-61579302237652/" target="_blank" rel="noopener">
+        <span class="ci"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h3l1-4h-4V8c0-1 .3-1.7 1.8-1.7H17V2.8C16.5 2.7 15.3 2.6 14 2.6c-2.8 0-4.7 1.7-4.7 4.8V10H6v4h3.3v8H13z"/></svg></span>
+        <div><b>Facebook</b><span data-en="Follow for updates" data-pt="Siga para novidades">Follow for updates</span></div>
+        <span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></span>
+      </a>
+      <div class="pad"><h3 class="sec-title" style="font-size:22px" data-en="Opening hours" data-pt="Horário">Opening hours</h3></div>
+      <div class="hours">
+        <div class="hrow"><span class="d" data-en="Monday" data-pt="Segunda">Monday</span><span class="t" data-en="Closed" data-pt="Fechado">Closed</span></div>
+        <div class="hrow"><span class="d" data-en="Tue – Thu" data-pt="Ter – Qui">Tue – Thu</span><span class="t">12–15 · 18–23</span></div>
+        <div class="hrow today"><span class="d" data-en="Fri – Sat" data-pt="Sex – Sáb">Fri – Sat</span><span class="t">12:00 – 24:00</span></div>
+        <div class="hrow"><span class="d" data-en="Sunday" data-pt="Domingo">Sunday</span><span class="t">12:00 – 22:00</span></div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- tab bar -->
+  <nav class="tabbar" id="tabbar">
+    <button class="tab on" data-nav="home">
+      <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 11l8-7 8 7M6 10v9h12v-9"/></svg>
+      <span data-en="Home" data-pt="Início">Home</span>
+    </button>
+    <button class="tab" data-nav="menu">
+      <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3v18M5 3c2 0 2 6 0 6M18 3v7m0 0c2 0 2-7 0-7m0 7v11"/></svg>
+      <span data-en="Menu" data-pt="Ementa">Menu</span>
+    </button>
+    <button class="tab book" id="tabBook">
+      <span class="fab"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 9h18M8 3v4M16 3v4"/></svg></span>
+      <span data-en="Book" data-pt="Reservar">Book</span>
+    </button>
+    <button class="tab" data-nav="reviews">
+      <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 4l2.3 4.7 5.2.8-3.7 3.6.9 5.1L12 15.8 7.3 18.2l.9-5.1L4.5 9.5l5.2-.8L12 4z"/></svg>
+      <span data-en="Reviews" data-pt="Avaliações">Reviews</span>
+    </button>
+    <button class="tab" data-nav="visit">
+      <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.7 7-12a7 7 0 10-14 0c0 5.3 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+      <span data-en="Visit" data-pt="Visitar">Visit</span>
+    </button>
+  </nav>
+
+  <div class="home-ind"></div>
+
+  <!-- reservation sheet -->
+  <div class="scrim" id="scrim"></div>
+  <div class="sheet" id="sheet">
+    <div class="grab"></div>
+    <div id="sheetForm">
+      <h2 data-en="Book a table" data-pt="Reservar mesa">Book a table</h2>
+      <p class="sub" data-en="We'll hold your table for 15 minutes." data-pt="Guardamos a sua mesa por 15 minutos.">We'll hold your table for 15 minutes.</p>
+      <div class="field">
+        <label data-en="Guests" data-pt="Pessoas">Guests</label>
+        <div class="stepper"><button id="gMinus" aria-label="less">−</button><span class="val" id="gVal">2</span><button id="gPlus" aria-label="more">+</button></div>
+      </div>
+      <div class="two">
+        <div class="field"><label data-en="Date" data-pt="Data">Date</label><input type="date" id="bDate"></div>
+        <div class="field"><label data-en="Time" data-pt="Hora">Time</label><input type="time" id="bTime" value="19:30"></div>
+      </div>
+      <div class="field">
+        <label data-en="Seating" data-pt="Lugar">Seating</label>
+        <div class="seg" id="seg">
+          <button class="on" data-en="Indoor" data-pt="Interior">Indoor</button>
+          <button data-en="Terrace" data-pt="Esplanada">Terrace</button>
+          <button data-en="Any" data-pt="Qualquer">Any</button>
+        </div>
+      </div>
+      <div class="two">
+        <div class="field"><label data-en="Name" data-pt="Nome">Name</label><input type="text" id="bName" data-en-ph="Your name" data-pt-ph="O seu nome" placeholder="Your name"></div>
+        <div class="field"><label data-en="Phone" data-pt="Telefone">Phone</label><input type="tel" id="bPhone" placeholder="+351 ..."></div>
+      </div>
+      <button class="cta" id="bConfirm" data-en="Confirm reservation" data-pt="Confirmar reserva">Confirm reservation</button>
+    </div>
+    <div class="sheet-ok" id="sheetOk">
+      <div class="tick"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div>
+      <h2 data-en="Table requested" data-pt="Mesa pedida">Table requested</h2>
+      <p data-en="This is a prototype — no reservation was actually sent. We'll wire this to the restaurant's booking system next." data-pt="Isto é um protótipo — nenhuma reserva foi enviada. Vamos ligar ao sistema de reservas do restaurante.">This is a prototype — no reservation was actually sent. We'll wire this to the restaurant's booking system next.</p>
+      <button class="cta" id="okClose" data-en="Done" data-pt="Concluído">Done</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var lang='en';
+  /* ---- language ---- */
+  function applyLang(l){
+    lang=l;document.documentElement.lang=l;
+    document.querySelectorAll('[data-en]').forEach(function(el){var v=el.getAttribute('data-'+l);if(v!=null)el.innerHTML=v;});
+    document.querySelectorAll('[data-en-ph]').forEach(function(el){var v=el.getAttribute('data-'+l+'-ph');if(v!=null)el.setAttribute('placeholder',v);});
+    var en=document.querySelector('.l-en'),pt=document.querySelector('.l-pt');
+    if(en&&pt){en.classList.toggle('off',l!=='en');pt.classList.toggle('off',l!=='pt');}
+  }
+  document.getElementById('langBtn').addEventListener('click',function(){applyLang(lang==='en'?'pt':'en');});
+
+  /* ---- screen nav ---- */
+  var appbar=document.getElementById('appbar'),screens=document.getElementById('screens');
+  function nav(name){
+    document.querySelectorAll('.screen').forEach(function(s){s.classList.toggle('active',s.getAttribute('data-screen')===name);});
+    document.querySelectorAll('.tab[data-nav]').forEach(function(t){t.classList.toggle('on',t.getAttribute('data-nav')===name);});
+    appbar.classList.toggle('on-hero',name==='home');       /* transparent bar only over hero */
+    var s=document.querySelector('.screen[data-screen="'+name+'"]');
+    if(s)s.scrollTop=0;
+  }
+  document.querySelectorAll('[data-nav]').forEach(function(b){b.addEventListener('click',function(){nav(b.getAttribute('data-nav'));});});
+
+  /* ---- menu filter ---- */
+  var chips=document.getElementById('chips');
+  chips.addEventListener('click',function(e){
+    var c=e.target.closest('.chip');if(!c)return;
+    chips.querySelectorAll('.chip').forEach(function(x){x.classList.toggle('on',x===c);});
+    var cat=c.getAttribute('data-cat');
+    document.querySelectorAll('#menuList .mrow').forEach(function(r){
+      r.style.display=(cat==='all'||r.getAttribute('data-cat')===cat)?'':'none';
+    });
+  });
+
+  /* ---- reservation sheet ---- */
+  var scrim=document.getElementById('scrim'),sheet=document.getElementById('sheet');
+  function openSheet(){scrim.classList.add('open');sheet.classList.add('open');}
+  function closeSheet(){scrim.classList.remove('open');sheet.classList.remove('open');}
+  ['tabBook','qaBook','menuFab'].forEach(function(id){var el=document.getElementById(id);if(el&&id!=='menuFab')el.addEventListener('click',openSheet);});
+  document.getElementById('menuFab').addEventListener('click',openSheet); /* hamburger → quick book for proto */
+  scrim.addEventListener('click',closeSheet);
+
+  /* guests stepper */
+  var g=2,gVal=document.getElementById('gVal');
+  document.getElementById('gPlus').addEventListener('click',function(){g=Math.min(12,g+1);gVal.textContent=g;});
+  document.getElementById('gMinus').addEventListener('click',function(){g=Math.max(1,g-1);gVal.textContent=g;});
+  /* seating segment */
+  var seg=document.getElementById('seg');
+  seg.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;seg.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b);});});
+  /* confirm */
+  document.getElementById('bConfirm').addEventListener('click',function(){
+    document.getElementById('sheetForm').style.display='none';
+    document.getElementById('sheetOk').classList.add('show');
+  });
+  document.getElementById('okClose').addEventListener('click',function(){
+    closeSheet();
+    setTimeout(function(){document.getElementById('sheetForm').style.display='';document.getElementById('sheetOk').classList.remove('show');},320);
+  });
+})();
+</script>
+</body>
+</html>

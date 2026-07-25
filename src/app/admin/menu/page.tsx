@@ -2,9 +2,8 @@ import { asc } from "drizzle-orm";
 import { db } from "@/db";
 import { menuCategories, menuItems } from "@/db/schema";
 import AdminBar from "@/components/admin/AdminBar";
-import CategoryNameForm from "@/components/admin/CategoryNameForm";
-import MenuItemRow from "@/components/admin/MenuItemRow";
-import NewMenuItemForm from "@/components/admin/NewMenuItemForm";
+import CategoryCard from "@/components/admin/CategoryCard";
+import NewCategoryForm from "@/components/admin/NewCategoryForm";
 
 // Admin-only, always shows live data — never statically cache this page.
 export const dynamic = "force-dynamic";
@@ -47,7 +46,10 @@ export default async function AdminMenuPage() {
       <AdminBar />
       <main className="admin-main">
         <div className="wrap">
-          <h2 style={{ marginBottom: 24 }}>Menu</h2>
+          <div className="admin-page-head">
+            <h2>Menu</h2>
+            <p className="admin-page-hint">Tap a category to see its items. Tap &ldquo;Edit&rdquo; on an item to change it.</p>
+          </div>
 
           {error && (
             <div className="admin-card">
@@ -59,27 +61,20 @@ export default async function AdminMenuPage() {
           )}
 
           {!error &&
-            categories.map((c) => (
-              <div className="admin-card" key={c.id}>
-                <CategoryNameForm id={c.id} nameEn={c.nameEn} namePt={c.namePt} />
-                <div className="item-row item-row-head">
-                  <span>Name</span>
-                  <span>Description (EN)</span>
-                  <span>Description (PT)</span>
-                  <span>Price €</span>
-                  <span>Veg</span>
-                  <span>🌶</span>
-                  <span>Order</span>
-                  <span></span>
-                </div>
-                {items
-                  .filter((i) => i.categoryId === c.id)
-                  .map((i) => (
-                    <MenuItemRow key={i.id} item={i} />
-                  ))}
-                <NewMenuItemForm categoryId={c.id} />
-              </div>
+            categories.map((c, index) => (
+              <CategoryCard
+                key={c.id}
+                id={c.id}
+                nameEn={c.nameEn}
+                namePt={c.namePt}
+                items={items.filter((i) => i.categoryId === c.id)}
+                isFirst={index === 0}
+                isLast={index === categories.length - 1}
+                defaultOpen={categories.length <= 1}
+              />
             ))}
+
+          {!error && <NewCategoryForm />}
         </div>
       </main>
     </>

@@ -73,8 +73,8 @@ export default function MenuSection({
 
         <p className="menu-note">
           {t(
-            "Prices in euro (€). This is a sample menu — final dishes, prices and allergen info to be confirmed with the restaurant. Vegetarian dishes marked VEG; 🌶 indicates a spicier plate.",
-            "Preços em euro (€). Esta é uma ementa de exemplo — pratos, preços e informação de alergénios a confirmar com o restaurante. Pratos vegetarianos marcados VEG; 🌶 indica um prato mais picante."
+            "Prices in euro (€), VAT included at the legally applicable rate. Items not requested or consumed will not be charged. Vegetarian dishes marked VEG; 🌶 indicates a spicier plate.",
+            "Preços em euro (€), com IVA incluído à taxa legal em vigor. Itens não solicitados ou não consumidos não serão cobrados. Pratos vegetarianos marcados VEG; 🌶 indica um prato mais picante."
           )}
         </p>
       </div>

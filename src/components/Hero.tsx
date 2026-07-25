@@ -59,8 +59,8 @@ export default function Hero() {
           </div>
           <div className="hero-visual">
             <div className="food-badge">
-              €8,50
-              <span>{t("Chicken Momo", "Momo de Frango")}</span>
+              €7,99
+              <span>{t("Chicken MoMo", "MoMo de Frango")}</span>
             </div>
             <div className="food-frame" data-label="Signature momo platter"></div>
           </div>

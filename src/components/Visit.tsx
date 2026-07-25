@@ -1,34 +1,12 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
 import { useT } from "@/lib/lang-context";
+import { HOURS, useToday } from "@/lib/hours";
 import ReservationForm from "./ReservationForm";
-
-const HOURS = [
-  { dayIndex: 1, en: "Monday", pt: "Segunda", hours: "11:30 – 02:00" },
-  { dayIndex: 2, en: "Tuesday", pt: "Terça", hours: "11:30 – 23:00" },
-  { dayIndex: 3, en: "Wednesday", pt: "Quarta", hours: "11:30 – 02:00" },
-  { dayIndex: 4, en: "Thursday", pt: "Quinta", hours: "11:30 – 02:00" },
-  { dayIndex: 5, en: "Friday", pt: "Sexta", hours: "11:30 – 02:00" },
-  { dayIndex: 6, en: "Saturday", pt: "Sábado", hours: "11:30 – 02:00" },
-  { dayIndex: 0, en: "Sunday", pt: "Domingo", hours: "11:30 – 02:00" },
-];
-
-function subscribeNever() {
-  return () => {};
-}
-
-function getToday() {
-  return new Date().getDay();
-}
-
-function getServerToday() {
-  return -1; // no day matches server-render; client hydrates with the real value
-}
 
 export default function Visit() {
   const t = useT();
-  const today = useSyncExternalStore(subscribeNever, getToday, getServerToday);
+  const today = useToday();
 
   return (
     <section id="visit" style={{ background: "var(--surface)" }}>
