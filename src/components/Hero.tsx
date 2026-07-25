@@ -52,8 +52,8 @@ export default function Hero() {
                 <span>{t("Open 6 days", "Aberto 6 dias")}</span>
               </div>
               <div>
-                <b>Halal</b>
-                <span>{t("& Veg options", "& opções Veg")}</span>
+                <b>{t("Full Bar", "Bar Completo")}</b>
+                <span>{t("Wine, spirits & sangria", "Vinho, licores & sangria")}</span>
               </div>
             </div>
           </div>
