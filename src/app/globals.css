@@ -210,7 +210,7 @@ header.nav .brand:hover img{transform:scale(1.08) translateY(-1px)}
 .book{margin-top:12px}
 .book .field{margin-bottom:16px}
 .book label{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
-.book input,.book select,.book textarea{width:100%;font-family:var(--font-body);font-size:15px;color:var(--ink);
+.book input,.book select,.book textarea{width:100%;font-family:var(--font-body);font-size:16px;color:var(--ink);
   background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;transition:border .15s}
 .book input:focus,.book select:focus,.book textarea:focus{outline:none;border-color:var(--accent)}
 .book .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -254,7 +254,7 @@ footer p{font-size:14px;max-width:34ch;margin-top:14px}
 .badge-veg{background:oklch(52% 0.13 145/.12);color:oklch(38% 0.1 145)}
 .badge-spicy{background:oklch(52% 0.16 42/.1);color:var(--accent-d)}
 .login-card{max-width:380px;margin:120px auto;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:32px}
-.admin-field{width:100%;padding:10px 12px;font-size:14.5px;font-family:var(--font-body);color:var(--ink);border:1px solid var(--border);border-radius:8px;background:var(--surface);min-height:44px}
+.admin-field{width:100%;padding:10px 12px;font-size:16px;font-family:var(--font-body);color:var(--ink);border:1px solid var(--border);border-radius:8px;background:var(--surface);min-height:44px}
 .btn-sm{padding:7px 14px;font-size:12.5px}
 .btn-danger{background:transparent;border:1px solid oklch(55% 0.18 30/.4);color:oklch(45% 0.16 30)}
 .btn-danger:hover{background:oklch(55% 0.18 30/.1)}
